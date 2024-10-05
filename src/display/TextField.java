@@ -1,7 +1,7 @@
 package display;
 import javax.swing.JTextField;
 
-public class CalcDisplay {
+public class TextField  {
     private JTextField userInput;
 
 }
