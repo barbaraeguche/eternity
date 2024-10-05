@@ -3,7 +3,7 @@ import javax.swing.JButton;
 import javax.swing.Action;
 
 public class Button {
-    private final int defaultSize = 60;
+    private final int defaultSize = 45;
     private final JButton button;
 
     //parameterized constructor for default buttons
@@ -25,7 +25,7 @@ public class Button {
 
     //customize button color, and others
     private JButton customSizeButton() {
-        return button.
+        return button;
     }
 
     //method to return each button
