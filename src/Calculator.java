@@ -10,7 +10,8 @@ public class Calculator extends JFrame {
 	private String digitButtonText[] = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", "." };
 	private String operatorButtonText[] = { "/", "sqrt", "X", "-","1/X", "+", "=" };
 	private String specialButtonText[] = { "Back", "C", "CE" };
-	private String transButtonText[] = {"log_a(X)"};//Put your transcendental function here.
+	private String transButtonText[] = {"log_a(X)" , "arccos"};//Put your transcendental function here.
+	Functions functions = new Functions();
 
 	//Calculators Width and Height in units on the screen.
 	final int FRAME_WIDTH = 325, FRAME_HEIGHT = 325;
@@ -299,7 +300,18 @@ class TransButton extends JButton implements ActionListener{
 	//Put all trancendental function implementation here **PLEASE SHOW YOUR IMPLEMENTATION WITH YOUR REVIEWER BEFORE MAKING A PULL REQUEST**:
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		String transText = ((TransButton) e.getSource()).getText();
+		double temp = Double.parseDouble(cl.displayLabel.getText());
+		if (transText.equals("arccos")) { // ONLY FOR ARCCOS FUNCTION.
+			try {
+				double result = cl.functions.ArcCosX(temp);
+				cl.displayLabel.setText(Calculator.getFormattedText(result));
+			} catch (IllegalArgumentException exc) {
+				cl.displayLabel.setText(exc.getMessage());
+			}
+		}
 		
+		/** YOU CAN ADD YOUR TRANSECTIONAL FUNCTION HERE IN AN ELSE IF BLOCK. */
+
 	}
 }
