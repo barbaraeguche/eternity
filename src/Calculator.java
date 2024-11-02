@@ -5,9 +5,9 @@ public class Calculator extends JFrame {
     //initialize
     double number;
     char op;
-    final int FRAME_WIDTH = 700, FRAME_HEIGHT = 700;
+    final int FRAME_WIDTH = 400, FRAME_HEIGHT = 550;
     final int HEIGHT = 40, WIDTH = 40, SPACE = 10;
-    final int TOPX = 30, TOPY = 50;
+    final int TOPX = 20, TOPY = 50;
 
     //initialize calculator texts and variables
     final String[] digitButtonsText = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", "." };
@@ -33,8 +33,8 @@ public class Calculator extends JFrame {
      */
     public Calculator(String frameText) {
         super(frameText);
-        int tempX = TOPX, tempY = TOPY;
-        displayLabel.setBounds(tempX, tempY, 240, HEIGHT);
+        int tempX, tempY = TOPY;
+        displayLabel.setBounds(TOPX + (WIDTH + SPACE), tempY, 259, HEIGHT);
         displayLabel.setBackground(Color.BLACK);
         displayLabel.setForeground(Color.WHITE);
         add(displayLabel);
@@ -43,21 +43,21 @@ public class Calculator extends JFrame {
         int digitX = TOPX + WIDTH + SPACE, digitY = TOPY + 2 * (HEIGHT + SPACE);
         tempX = digitX; tempY = digitY;
         for(int i = 0; i < digitButtons.length; i++) {
-            digitButtons[i] = new DigitButton(tempX, tempY, WIDTH, HEIGHT, digitButtonsText[i], this);
+            digitButtons[i] = new DigitButton(tempX, tempY, WIDTH + 9, HEIGHT, digitButtonsText[i], this);
             digitButtons[i].setForeground(Color.BLACK);
             tempX += WIDTH + SPACE;
             if((i + 1) % 3 == 0) {
                 tempX = digitX;
-                tempY += HEIGHT + SPACE;  //This goes from +2 * (h+v) to +5 * (h+v) therefore special buttons need to be +6 * (h+v) onwards. Comment by Dennis.
+                tempY += HEIGHT + SPACE; //this goes from +2 * (h+v) to +5 * (h+v) therefore special buttons need to be +6 * (h+v) onwards. Comment by Dennis.
             }
         }
 
         //set the coordinates for operator buttons
-        int opsX = digitX + 2 * (WIDTH + SPACE) + SPACE, opsY = digitY;
-        tempX = opsX; tempY = opsY;
+        int opsX = digitX + 2 * (WIDTH + SPACE) + SPACE;
+        tempX = opsX; tempY = digitY;
         for(int i = 0; i < operatorButtonsText.length; i++) {
             tempX += WIDTH + SPACE;
-            operatorButtons[i] = new OperatorButton(tempX, tempY, WIDTH, HEIGHT, operatorButtonsText[i], this);
+            operatorButtons[i] = new OperatorButton(tempX, tempY, WIDTH + 9, HEIGHT, operatorButtonsText[i], this);
             operatorButtons[i].setForeground(Color.BLACK);
             if((i + 1) % 2 == 0) {
                 tempX = opsX;
@@ -66,7 +66,7 @@ public class Calculator extends JFrame {
         }
 
         //set the coordinates for special buttons
-        tempX = TOPX + 1 * (WIDTH + SPACE); tempY = TOPY + 1 * (HEIGHT + SPACE);
+        tempX = TOPX + (WIDTH + SPACE); tempY = TOPY + (HEIGHT + SPACE);
         for(int i = 0; i < specialButtonsText.length; i++) {
             specialButtons[i] = new SpecialButton(tempX, tempY, WIDTH * 2, HEIGHT, specialButtonsText[i], this);
             specialButtons[i].setForeground(Color.BLACK);
@@ -74,20 +74,22 @@ public class Calculator extends JFrame {
         }
         
         //set the coordinates for transcendental buttons
-        tempX = TOPX + 1 * (WIDTH + SPACE); // +1 * (w+h) is the indentation from the left side??? not sure
-        tempY = TOPY + 6 *(HEIGHT + SPACE); //Since the last set of buttons are at Y-coordinate  +5*(h+v) this must start at 6*(h+v)
+        tempX = TOPX + (WIDTH + SPACE); //+1 * (w+h) is the indentation from the left side??? not sure
+        tempY = TOPY + 6 *(HEIGHT + SPACE); //since the last set of buttons are at Y-coordinate  +5 * (h+v) this must start at 6*(h+v)
         for(int i = 0; i < transcendentalButtonsText.length; i++) {
             transcendentalButtons[i] = new TranscendentalButton(tempX, tempY, WIDTH * 2, HEIGHT, transcendentalButtonsText[i], this);
             transcendentalButtons[i].setForeground(Color.BLACK);
-            tempX=tempX+2*WIDTH+SPACE; //This is where you adjust the width of the button and the hspace I think...
+            tempX = tempX + 2 * WIDTH + SPACE; //this is where you adjust the width of the button and the hspace I think...
 
-            //Need to check if more than 3 buttons already if yes do this adjust tempY
+            //need to check if more than 3 buttons already if yes do this adjust tempY
             if((i + 1) % 3 == 0) {
-                tempX = TOPX + 1 * (WIDTH + SPACE); // make sure first button of next row is also indented.
-                tempY += HEIGHT + SPACE; // make sure you move to next row
+                tempX = TOPX + (WIDTH + SPACE); //make sure first button of next row is also indented.
+                tempY += HEIGHT + SPACE; //make sure you move to next row
             }
         }
 
+        //set the calculator's layout and appearance
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         setVisible(true);
