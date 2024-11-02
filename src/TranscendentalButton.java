@@ -34,7 +34,7 @@ class TranscendentalButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String transcendentalText = ((TranscendentalButton) e.getSource()).getText();
-        double value = Double.parseDouble(calculator.displayLabel.getText()), result = 0.0;
+        double value = Double.parseDouble(calculator.displayLabel.getText()), result;
 
         try {
             switch(transcendentalText) {
