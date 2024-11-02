@@ -1,1 +1,1 @@
-# comp354-calculator
+## Eternity Calculator
