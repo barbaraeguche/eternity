@@ -50,13 +50,13 @@ class TranscendentalButton extends JButton implements ActionListener {
                     break;
                 case "x^y":
                     if(parameterList.length != 2) throw new TooManyArgumentsException();
-//                    result = calculator.functions.xPowerY(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.xPowerY(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "(ab)^x":
                     if(parameterList.length != 3) throw new TooManyArgumentsException();
-//                    result = calculator.functions.abPowerX(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.abPowerX(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "mad":
                     result = calculator.functions.meanAbsoluteDeviation(parameterList);
@@ -64,18 +64,18 @@ class TranscendentalButton extends JButton implements ActionListener {
                     break;
                 case "arccos(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
-//                    result = calculator.functions.arcCosX(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.arcCosX(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "log_b(x)":
                     if(parameterList.length != 2) throw new TooManyArgumentsException();
-//                    result = calculator.functions.logXBaseB(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.logXBaseB(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "sinh(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
-//                    result = calculator.functions.sinHX(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.sinHX(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
             }
         } catch(IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());

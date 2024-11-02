@@ -49,14 +49,14 @@ public class Functions {
         return sumOfDeviations / (double)initialDataSet.length;
     }
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ WHOEVER DID THIS PLEASE FIX TO TAKE AN ARRAY OF DOUBLES AS PARAMETER LIKE THE REST OF THE FUNCTIONS, THANKS ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     /**
      * this method calculates the arc-cosine of a given input.
-     * @param x the input for which we want to calculate the arc-cosine.
+     * @param initialDataSet the input for which we want to calculate the arc-cosine.
      * @return the arc-cosine of the input in radians if it is between -1 and 1. else, an IllegalArgumentException is thrown with a message indicating the error.
      * @throws IllegalArgumentException if the value is not within the required domain of [-1 , 1]
      */
-    public double arcCosX(double x) throws IllegalArgumentException {
+    public double arcCosX(double[] initialDataSet) throws IllegalArgumentException {
+        double x = initialDataSet[0];
         //check that input is within the domain of arccos
         if(x < -1.0 || x > 1.0) throw new IllegalArgumentException("Input must be in the range [-1, 1]");
         //initialize variables
