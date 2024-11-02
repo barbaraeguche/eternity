@@ -40,16 +40,21 @@ class DigitButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //get the label of button and append it to the displayLabel of the Calculator.
         String digitText = ((DigitButton) e.getSource()).getText(); int index;
+        if(calculator.displayLabel.getText().contains("Error")) {
+            calculator.setClear = true;
+        }
 
-        if(digitText.equals(".")) {
-            if(calculator.setClear) {
-                calculator.displayLabel.setText("0.");
-                calculator.setClear = false;
-            } else if(!isInString(calculator.displayLabel.getText())) {
-                calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
-            } return;
-        } else if(digitText.equals("+/-")) {
-            calculator.displayLabel.setText(Double.toString(Double.parseDouble(calculator.displayLabel.getText()) * -1));
+        switch(digitText) {
+            case "." -> {
+                if(calculator.setClear) {
+                    calculator.displayLabel.setText("0.");
+                    calculator.setClear = false;
+                } else if (!isInString(calculator.displayLabel.getText())) {
+                    calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
+                } return;
+            }
+            case "+/-" -> calculator.displayLabel.setText(Double.toString(Double.parseDouble(calculator.displayLabel.getText()) * -1));
+            case "," -> calculator.displayLabel.setText(calculator.displayLabel.getText() + ",");
         }
 
         try {

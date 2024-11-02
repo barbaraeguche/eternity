@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.text.DecimalFormat;
+import java.util.stream.Stream;
 
 /**
  * this is the TranscendentalButton class.
@@ -34,40 +36,51 @@ class TranscendentalButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String transcendentalText = ((TranscendentalButton) e.getSource()).getText();
-        double value = Double.parseDouble(calculator.displayLabel.getText()), result;
+        String displayText = calculator.displayLabel.getText();
+        DecimalFormat df = new DecimalFormat("#.00"); double result;
+
+        //transform string to list of parameters
+        double[] parameterList = Stream.of(displayText.split(",")).mapToDouble(Double::parseDouble).toArray();
 
         try {
             switch(transcendentalText) {
                 case "st.dev":
-//                    result = calculator.functions.standardDeviation(value);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.standardDeviation(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
                     break;
                 case "x^y":
-//                    result = calculator.functions.xPowerY(value);
+                    if(parameterList.length != 2) throw new TooManyArgumentsException();
+//                    result = calculator.functions.xPowerY(parameterList);
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "(ab)^x":
-//                    result = calculator.functions.powerOfProduct(value);
+                    if(parameterList.length != 3) throw new TooManyArgumentsException();
+//                    result = calculator.functions.abPowerX(parameterList);
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "mad":
-//                    result = calculator.functions.meanAbsoluteDeviation(value);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.meanAbsoluteDeviation(parameterList);
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
                     break;
                 case "arccos(x)":
-                    result = calculator.functions.arcCosX(value);
-                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    if(parameterList.length != 1) throw new TooManyArgumentsException();
+//                    result = calculator.functions.arcCosX(parameterList);
+//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "log_b(x)":
-//                    result = calculator.functions.logarithm(value);
+                    if(parameterList.length != 2) throw new TooManyArgumentsException();
+//                    result = calculator.functions.logXBaseB(parameterList);
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "sinh(x)":
-//                    result = calculator.functions.logarithm(value);
+                    if(parameterList.length != 1) throw new TooManyArgumentsException();
+//                    result = calculator.functions.sinHX(parameterList);
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
             }
-        } catch (IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());
-        } catch(Exception err) { calculator.displayLabel.setText("An error occurred: " + err.getMessage()); }
+        } catch(IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());
+        } catch(TooManyArgumentsException exc) { calculator.displayLabel.setText("Error: Too Many Arguments");
+        } catch(Exception err) { calculator.displayLabel.setText("An error occurred: " + err.getMessage());
+        }
     }
 }

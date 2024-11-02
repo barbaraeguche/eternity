@@ -33,13 +33,22 @@ class OperatorButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String operationText = ((OperatorButton) e.getSource()).getText();
-        double temp = Double.parseDouble(calculator.displayLabel.getText());
+        String displayText = calculator.displayLabel.getText();
+
+        try {
+            if(displayText.contains(",")) throw new TooManyArgumentsException();
+        } catch (TooManyArgumentsException exc) {
+            calculator.displayLabel.setText("Error: Too Many Parameters");
+            return;
+        }
+
+        double temp = Double.parseDouble(displayText);
         calculator.setClear = true;
 
         try {
             switch(operationText) {
                 case "1/x":
-                    calculator.displayLabel.setText(Calculator.getFormattedText(1 / (double)temp));
+                    calculator.displayLabel.setText(Calculator.getFormattedText(1 / temp));
                     return;
                 case "sqrt":
                     calculator.displayLabel.setText(Calculator.getFormattedText(Math.sqrt(temp)));
@@ -49,7 +58,7 @@ class OperatorButton extends JButton implements ActionListener {
                     calculator.op = operationText.charAt(0);
                     return;
             }
-        } catch (ArithmeticException exc) { calculator.displayLabel.setText("Error: Dividing by Zero"); return; }
+        } catch(ArithmeticException exc) { calculator.displayLabel.setText("Error: Math Error"); return; }
 
         try {
             temp = switch(calculator.op) {
@@ -60,7 +69,7 @@ class OperatorButton extends JButton implements ActionListener {
                 case '/' -> calculator.number / temp;
                 default -> temp;
             };
-        } catch (ArithmeticException err) {
+        } catch(ArithmeticException err) {
             String errorMsg = calculator.op == '%'? "Error: Modulus by zero" : "Error: Dividing by Zero";
             calculator.displayLabel.setText(errorMsg); return;
         }
