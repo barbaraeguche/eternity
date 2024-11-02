@@ -38,9 +38,7 @@ public class Functions {
      *
      * @return
      */
-    public int meanAbsoluteDeviation() {
-        return 1;
-    }
+    public int meanAbsoluteDeviation() { return 1; }
 
     /**
      * this function calculates the arc-cosine of a given input.
