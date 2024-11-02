@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import java.util.stream.Stream;
 import javax.swing.*;
 
@@ -36,6 +37,7 @@ class TranscendentalButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String transcendentalText = ((TranscendentalButton) e.getSource()).getText();
         String displayText = calculator.displayLabel.getText();
+        double result;
 
         /*Transform String to list of parameters*/
         double[] parameterList = Stream.of(displayText.split(",")).mapToDouble(Double::parseDouble).toArray();
@@ -57,8 +59,9 @@ class TranscendentalButton extends JButton implements ActionListener {
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "mad":
-//                    result = calculator.functions.meanAbsoluteDeviation(parameterList);
-//                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    result = calculator.functions.meanAbsoluteDeviation(parameterList);
+                    DecimalFormat df = new DecimalFormat("#.00");
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
                     break;
                 case "arccos(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();

@@ -38,7 +38,26 @@ public class Functions {
      *
      * @return
      */
-    public int meanAbsoluteDeviation() { return 1; }
+    public double meanAbsoluteDeviation(double[] initialDataSet) {
+        double meanOfDataSet = CalculateMean(initialDataSet);
+        double sumOfDeviations = 0;
+
+        for(int i = 0; i < initialDataSet.length; i++) {
+            sumOfDeviations += Math.abs(initialDataSet[i] - meanOfDataSet);
+        }
+
+        return sumOfDeviations / (double) initialDataSet.length;
+    }
+
+    public static double CalculateMean(double[] dataSet) {
+        double sum = 0;
+
+        for(double i: dataSet) {
+            sum += i;
+        }
+
+        return sum / (double) dataSet.length;
+    }
 
     /**
      * this function calculates the arc-cosine of a given input.
