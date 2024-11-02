@@ -34,9 +34,10 @@ public class Calculator extends JFrame {
     public Calculator(String frameText) {
         super(frameText);
         int tempX, tempY = TOPY;
-        displayLabel.setBounds(TOPX + (WIDTH + SPACE), tempY, 259, HEIGHT);
+        displayLabel.setBounds(TOPX + (WIDTH + SPACE), tempY - 20, 259, HEIGHT + 20);
         displayLabel.setBackground(Color.BLACK);
         displayLabel.setForeground(Color.WHITE);
+        displayLabel.setFont(new Font("SansSerif", Font.BOLD, 24)); //display size and font
         add(displayLabel);
 
         //set the coordinates for digit buttons
