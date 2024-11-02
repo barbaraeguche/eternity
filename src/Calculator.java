@@ -10,7 +10,7 @@ public class Calculator extends JFrame {
 	private String digitButtonText[] = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", "." };
 	private String operatorButtonText[] = { "/", "sqrt", "X", "-","1/X", "+", "=" };
 	private String specialButtonText[] = { "Back", "C", "CE" };
-	private String transButtonText[] = {"log_a(X)", "ab^x", "ab^x", "ab^x", "ab^x", "ab^x", "ab^x", "ab^x"};//Put your transcendental function here.
+	private String transButtonText[] = {"log_a(X)", "ab^x"};//Put your transcendental function here.
 	Functions functions = new Functions();
 
 	//Calculators Width and Height in units on the screen.
@@ -94,31 +94,6 @@ public class Calculator extends JFrame {
 				tempY += HEIGHT + V_SPACE; // make sure you mov eto next row
 			}
 		}
-
-
-
-//		//Old Code JUST IN CASE
-//		//Set Co-ordinates for Transcendental functions
-//		int transX = digitX - 3 * (WIDTH + H_SPACE) + H_SPACE;
-//		int transY = digitY;
-//		tempX = transX;
-//		tempY = transY;
-//		for (int i = 0; i < transButtonText.length; i++) {
-//			tempX += WIDTH + H_SPACE;
-//			transButtons[i] = new TransButton(tempX, tempY, WIDTH, HEIGHT, transButtonText[i], this);
-//			transButtons[i].setForeground(Color.BLACK);
-//			;
-//			if ((i + 1) % 2 == 0) {
-//				tempX = transX;
-//				tempY += HEIGHT + V_SPACE;
-//			}
-//		}
-
-
-
-
-
-
 
 		setLayout(null);
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -241,31 +216,37 @@ class OperatorButton extends JButton implements ActionListener {
 		}
 		switch (cl.op) {
 		case '+':
-			temp += cl.number;
+			temp = cl.number + temp;
+			System.out.println(temp);
 			break;
 		case '-':
-			temp -= cl.number;
+			System.out.println(temp+"-"+-cl.number);
+			temp = cl.number - temp;
+			System.out.println(temp);
 			break;
 		case 'X':
 			temp *= cl.number;
+			System.out.println(temp);
 			break;
 		case '%':
 			try {
 				temp = cl.number % temp;
 			} catch (ArithmeticException exc) {
-				cl.displayLabel.setText("Error: Dividing by Zero");
+				cl.displayLabel.setText("MATH ERROR");
 				return;
 			}
 			break;
 		case '/':
 			try {
 				temp = cl.number / temp;
+				System.out.println(temp);
 			} catch (ArithmeticException exc) {
-				cl.displayLabel.setText("Error: Dividing by Zero");
+				cl.displayLabel.setText("ERROR: DIVIDE BY ZERO");
 				return;
 			}
 			break;
 		}
+		System.out.println(temp);
 		cl.displayLabel.setText(Calculator.getFormattedText(temp));
 		cl.number = temp;
 	}
