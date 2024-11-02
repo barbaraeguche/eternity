@@ -24,6 +24,8 @@ public class Functions {
      * @return the calculated x^y as a double.
      */
     public int xPowerY(double[] initialDataSet) {
+        double x = initialDataSet[0], y = initialDataSet[1];
+
         return 1;
     }
 
@@ -33,6 +35,8 @@ public class Functions {
      * @return the calculated (ab)^x as a double.
      */
     public int abPowerX(double[] initialDataSet) {
+        double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
+
         return 1;
     }
 
@@ -74,6 +78,8 @@ public class Functions {
      * @return the logarithm of a value with respect to a specified base.
      */
     public int logXBaseB(double[] initialDataSet) {
+        double x = initialDataSet[0], b = initialDataSet[1];
+
         return 1;
     }
 
@@ -83,6 +89,8 @@ public class Functions {
      * @return the hyperbolic sine of the input in radians.
      */
     public int sinHX(double[] initialDataSet) {
+        double x = initialDataSet[0];
+
         return 1;
     }
 
