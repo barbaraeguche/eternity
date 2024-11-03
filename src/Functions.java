@@ -30,9 +30,9 @@ public class Functions {
     }
 
     /**
-     * this method calculates the (ab)^x of a given input.
+     * this method calculates the a(b^x) of a given input.
      * @param initialDataSet an array of doubles representing the dataset.
-     * @return the calculated (ab)^x as a double.
+     * @return the calculated a(b^x) as a double.
      */
     public double abPowerX(double[] initialDataSet) {
         double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
