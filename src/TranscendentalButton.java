@@ -54,7 +54,8 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "(ab)^x":
-                    if(parameterList.length != 3) throw new TooManyArgumentsException();
+                    if(parameterList.length != 3)
+                        throw new TooManyArgumentsException();
                     result = calculator.functions.abPowerX(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
