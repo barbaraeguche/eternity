@@ -23,10 +23,10 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the calculated x^y as a double.
      */
-    public int xPowerY(double[] initialDataSet) {
+    public double xPowerY(double[] initialDataSet) {
         double x = initialDataSet[0], y = initialDataSet[1];
 
-        return 1;
+        return 1.0;
     }
 
     /**
@@ -37,8 +37,8 @@ public class Functions {
     public double abPowerX(double[] initialDataSet) {
         double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
 
-        //TODO UPDATE MATH.pow after x^y is done
-        return a*(Math.pow(b,x));
+        //TODO update Math.pow after x^y is done
+        return a * Math.pow(b, x);
     }
 
     /**
@@ -78,10 +78,10 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the logarithm of a value with respect to a specified base.
      */
-    public int logXBaseB(double[] initialDataSet) {
+    public double logXBaseB(double[] initialDataSet) {
         double x = initialDataSet[0], b = initialDataSet[1];
 
-        return 1;
+        return 1.0;
     }
 
     /**
@@ -89,10 +89,10 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the hyperbolic sine of the input in radians.
      */
-    public int sinHX(double[] initialDataSet) {
+    public double sinHX(double[] initialDataSet) {
         double x = initialDataSet[0];
 
-        return 1;
+        return 1.0;
     }
 
 
