@@ -34,10 +34,11 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the calculated (ab)^x as a double.
      */
-    public int abPowerX(double[] initialDataSet) {
+    public double abPowerX(double[] initialDataSet) {
         double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
 
-        return 1;
+        //TODO UPDATE MATH.pow after x^y is done
+        return a*(Math.pow(b,x));
     }
 
     /**
