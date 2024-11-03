@@ -23,10 +23,10 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the calculated x^y as a double.
      */
-    public int xPowerY(double[] initialDataSet) {
+    public double xPowerY(double[] initialDataSet) {
         double x = initialDataSet[0], y = initialDataSet[1];
 
-        return 1;
+        return 1.0;
     }
 
     /**
