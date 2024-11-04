@@ -87,7 +87,6 @@ public class Functions {
 
     /**
      * This method calculates the hyperbolic sine (sinh) of a given input using a Taylor series approximation.
-     *
      * this method calculates the hyperbolic sine of a given input.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the hyperbolic sine of the input in radians.
