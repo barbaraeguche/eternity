@@ -5,7 +5,7 @@ public class Calculator extends JFrame {
     //initialize
     double number;
     char op;
-    final int FRAME_WIDTH = 400, FRAME_HEIGHT = 550;
+    final int FRAME_WIDTH = 400, FRAME_HEIGHT = 630;
     final int HEIGHT = 40, WIDTH = 40, SPACE = 10;
     final int TOPX = 20, TOPY = 50;
 
@@ -34,9 +34,10 @@ public class Calculator extends JFrame {
     public Calculator(String frameText) {
         super(frameText);
         int tempX, tempY = TOPY;
-        displayLabel.setBounds(TOPX + (WIDTH + SPACE), tempY, 259, HEIGHT);
+        displayLabel.setBounds(TOPX + (WIDTH + SPACE), tempY - 20, 259, HEIGHT + 20);
         displayLabel.setBackground(Color.BLACK);
         displayLabel.setForeground(Color.WHITE);
+        displayLabel.setFont(new Font("SansSerif", Font.BOLD, 24)); //display size and font
         add(displayLabel);
 
         //set the coordinates for digit buttons
@@ -75,7 +76,7 @@ public class Calculator extends JFrame {
         
         //set the coordinates for transcendental buttons
         tempX = TOPX + (WIDTH + SPACE); //+1 * (w+h) is the indentation from the left side??? not sure
-        tempY = TOPY + 6 *(HEIGHT + SPACE); //since the last set of buttons are at Y-coordinate  +5 * (h+v) this must start at 6*(h+v)
+        tempY = TOPY + 7 * (HEIGHT + SPACE); //since the last set of buttons are at Y-coordinate  +5 * (h+v) this must start at 6*(h+v)
         for(int i = 0; i < transcendentalButtonsText.length; i++) {
             transcendentalButtons[i] = new TranscendentalButton(tempX, tempY, WIDTH * 2, HEIGHT, transcendentalButtonsText[i], this);
             transcendentalButtons[i].setForeground(Color.BLACK);
