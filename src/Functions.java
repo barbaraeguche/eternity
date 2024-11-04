@@ -73,6 +73,7 @@ public class Functions {
         return Math.PI / 2 - sum;
     }
 
+
     /**
      * this method calculates the logarithm of a given input with respect to a given base.
      * @param initialDataSet an array of doubles representing the dataset.
@@ -85,14 +86,29 @@ public class Functions {
     }
 
     /**
+     * This method calculates the hyperbolic sine (sinh) of a given input using a Taylor series approximation.
+     *
      * this method calculates the hyperbolic sine of a given input.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the hyperbolic sine of the input in radians.
+     * @throws TooManyArgumentsException if the input array contains more than one element.
      */
-    public double sinHX(double[] initialDataSet) {
-        double x = initialDataSet[0];
+    public double sinHX(double[] initialDataSet)  throws TooManyArgumentsException{
 
-        return 1.0;
+        if (initialDataSet.length > 1) // check if multiple numbers were passed
+            throw new TooManyArgumentsException("Only one number can be read for hyperbolic sine calculation.");
+
+        double x = initialDataSet[0]; // set x to entered number in calculator
+        double result = 0.0; // what will be calculated and returned (default to 0.0)
+        double xPower = x; // initialize xPower to passed argument for the first term (numerators of fraction summation)
+
+        // Taylor series loop to go through each term and add it to the total
+        for (int i = 1; i <= 15; i += 2) {
+            double term = xPower / factorial(i); // calculate the current term:  (x^(2i+1)) / (i!)
+            result += term; // add it to the summation result
+            xPower *= x * x; // update xPower to x^(i+2) for the next numerator value in the series
+        }
+        return result; // return calculated sinh(x)
     }
 
 
