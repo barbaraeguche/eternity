@@ -59,7 +59,8 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "log_b(x)":
-//                    result = calculator.functions.logarithm(value);
+                	
+                	//result = calculator.functions.logarithm(value);
 //                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "sinh(x)":
@@ -68,6 +69,7 @@ class TranscendentalButton extends JButton implements ActionListener {
                     break;
             }
         } catch (IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());
+        }catch(ArithmeticException exc) {calculator.displayLabel.setText(exc.getMessage());
         } catch(Exception err) { calculator.displayLabel.setText("An error occurred: " + err.getMessage()); }
     }
 }

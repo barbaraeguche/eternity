@@ -58,6 +58,14 @@ public class Functions {
         }
         return Math.PI / 2 - sum;
     }
+    
+    public double logXBaseB(double x) {
+		double result = 0;
+			if(x<=0)throw new ArithmeticException("Error: Math Error");
+			
+		result = ln(x)/ln(10);
+    	return result;
+    }
 
     /**
      *
@@ -65,8 +73,18 @@ public class Functions {
      * @param b
      * @return
      */
-    public int logXBaseB(float x, int b) {
-        return 1;
+    public double logXBaseB(float x, int b) {
+    	double result = ln(x)/ln(b);
+    	
+    	return result;
+    }
+    
+    public static double ln(double x) {
+    	double result=0;
+    	for(int i=0;i<=80;i++) {
+    		result+=(Math.pow(-1, i)*Math.pow(x, i+1))/(i+1);
+    	}
+    	return result;
     }
 
     /**
