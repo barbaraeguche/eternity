@@ -10,7 +10,7 @@ public class Calculator extends JFrame {
     final int TOPX = 20, TOPY = 50;
 
     //initialize calculator texts and variables
-    final String[] digitButtonsText = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", "." };
+    final String[] digitButtonsText = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", ".", "," };
     final String[] operatorButtonsText = { "/", "sqrt", "x", "-", "1/x", "+", "=", "%" };
     final String[] specialButtonsText = { "Back", "C", "CE" };
     final String[] transcendentalButtonsText = { "st.dev", "x^y", "(ab)^x", "mad", "arccos(x)", "log_b(x)", "sinh(x)" };
