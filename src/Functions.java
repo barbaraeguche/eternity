@@ -85,14 +85,20 @@ public class Functions {
     }
 
     /**
-     * this method calculates the hyperbolic sine of a given input.
+     * this method calculates the hyperbolic sine (sinh) of a given input using the taylor series approximation.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the hyperbolic sine of the input in radians.
      */
     public double sinHX(double[] initialDataSet) {
-        double x = initialDataSet[0];
+        double x = initialDataSet[0], result = 0.0;
+        double xPower = x; //initialize xPower to passed argument for the first term (numerators of fraction summation)
 
-        return 1.0;
+        //taylor series loop to go through each term and add it to the total
+        for(int i = 1; i <= 15; i += 2) {
+            result += xPower / factorial(i); //calculate the current term: (x^(2i+1)) / i!
+            xPower *= x * x; //update xPower to x^(i+2) for the next numerator value in the series
+        }
+        return result;
     }
 
 
