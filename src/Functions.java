@@ -106,12 +106,33 @@ public class Functions {
      * @param x is a double representing the argument of log.
      * @return the natural logarithm of a value with respect to e as its base.
      */
-    public static double ln( double x) {
-    	double result = 0;
-    	for(int i=0;i<=80;i++) {
-    		result+=(Math.pow(-1, i)*Math.pow(x, i+1))/(i+1);
-    	}
-    	return result;
+ // Method to calculate ln(x) using a Taylor series
+    public static double ln(double x) {
+        if (x <= 0) {
+            throw new IllegalArgumentException("x must be positive.");
+        }
+        
+        // Transform x to be close to 1 for faster convergence
+        int k = 0;
+        while (x > 2) {
+            x /= 2;
+            k++;
+        }
+        
+        x = (x - 1) / (x + 1);
+        double result = 0.0;
+        double term = x;
+        double xSquared = x * x;
+
+        for (int i = 1; i <= 100; i += 2) { // Taylor series sum
+            result += term / i;
+            term *= xSquared;
+        }
+
+        result *= 2; // Multiply by 2 as per Taylor series formula
+        result += k * 0.69314718056; // Adjust for factors of 2 (ln(2) ≈ 0.693147)
+
+        return result;
     }
 
     /**
