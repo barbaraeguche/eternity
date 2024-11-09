@@ -34,12 +34,14 @@ class OperatorButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String operationText = ((OperatorButton) e.getSource()).getText();
         String displayText = calculator.displayLabel.getText();
+        
         try {
             if(displayText.contains(",")) throw new TooManyArgumentsException();
         } catch (TooManyArgumentsException exc) {
             calculator.displayLabel.setText("Error: Too Many Parameters");
             return;
         }
+
         double temp = Double.parseDouble(displayText);
         calculator.setClear = true;
 
@@ -57,7 +59,7 @@ class OperatorButton extends JButton implements ActionListener {
                     return;
             }
         } catch(ArithmeticException exc) { calculator.displayLabel.setText("Error: Math Error"); return; }
-        
+
         try {
             temp = switch(calculator.op) {
                 case '+' -> calculator.number + temp;
