@@ -17,17 +17,11 @@ public class Functions {
         for(double i: initialDataSet) { sumOfDeviations += Math.pow(i - dataSetMean, 2); }
         return Math.sqrt(sumOfDeviations / ((double)initialDataSet.length - 1));
     }
-     /**
-     * @param x
-     * @param y
-     * @return
-=======
 
     /**
      * this method calculates the x^y of a given input.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the calculated x^y as a double.
->>>>>>> 1d030f8380e7f59b7fe2edf0218a8bdbd41e456f
      */
     public double xPowerY(double[] initialDataSet) {
         double x = initialDataSet[0], y = initialDataSet[1];
@@ -78,17 +72,15 @@ public class Functions {
         }
         return Math.PI / 2 - sum;
     }
+
     /**
-     * this method calculates the logarithm of a given input with with respect to base 10.
+     * this method calculates the logarithm of a given input with respect to base 10.
      * @param x is a double representing the argument of log.
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBase10(double x) {
-		double result = 0;
-			if(x<=0)throw new ArithmeticException("Error: Math Error");
-			
-		result = ln(x)/ln(10);
-    	return result;
+        if(x <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(x) / ln(10);
     }
 
     /**
@@ -97,53 +89,25 @@ public class Functions {
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBaseB(double[] initialDataSet) {
-    	double result = ln(initialDataSet[0])/ln(initialDataSet[1]);
-    	
-    	return result;
-    }
-    /**
-     * this method calculates the logarithm of a given input with with respect to base e. This is an approximation based on the Taylor Series on natural logarithm.
-     * @param x is a double representing the argument of log.
-     * @return the natural logarithm of a value with respect to e as its base.
-     */
- // Method to calculate ln(x) using a Taylor series
-    public static double ln(double x) {
-        if (x <= 0) {
-            throw new IllegalArgumentException("x must be positive.");
-        }
-        
-        // Transform x to be close to 1 for faster convergence
-        int k = 0;
-        while (x > 2) {
-            x /= 2;
-            k++;
-        }
-        
-        x = (x - 1) / (x + 1);
-        double result = 0.0;
-        double term = x;
-        double xSquared = x * x;
-
-        for (int i = 1; i <= 100; i += 2) { // Taylor series sum
-            result += term / i;
-            term *= xSquared;
-        }
-
-        result *= 2; // Multiply by 2 as per Taylor series formula
-        result += k * 0.69314718056; // Adjust for factors of 2 (ln(2) ≈ 0.693147)
-
-        return result;
+        if(initialDataSet[0] <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(initialDataSet[0]) / ln(initialDataSet[1]);
     }
 
     /**
-     * this method calculates the hyperbolic sine of a given input.
+     * this method calculates the hyperbolic sine (sinh) of a given input using the taylor series approximation.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the hyperbolic sine of the input in radians.
      */
     public double sinHX(double[] initialDataSet) {
-        double x = initialDataSet[0];
+        double x = initialDataSet[0], result = 0.0;
+        double xPower = x; //initialize xPower to passed argument for the first term (numerators of fraction summation)
 
-        return 1.0;
+        //taylor series loop to go through each term and add it to the total
+        for(int i = 1; i <= 15; i += 2) {
+            result += xPower / factorial(i); //calculate the current term: (x^(2i+1)) / i!
+            xPower *= x * x; //update xPower to x^(i+2) for the next numerator value in the series
+        }
+        return result;
     }
 
 
@@ -170,5 +134,36 @@ public class Functions {
         double sum = 0;
         for(double i: dataSet) { sum += i; }
         return sum / (double)dataSet.length;
+    }
+    /**
+     * this method calculates the logarithm of a given input with respect to base e. this is an approximation based on the Taylor Series on natural logarithm.
+     * @param x is a double representing the argument of log.
+     * @return the natural logarithm of a value with respect to e as its base.
+     */
+    public static double ln(double x) {
+        if(x <= 0) throw new IllegalArgumentException("x must be positive.");
+
+        //transform x to be close to 1 for faster convergence
+        int k = 0;
+        while(x > 2) {
+            x /= 2;
+            k++;
+        }
+
+        x = (x - 1) / (x + 1);
+        double result = 0.0, term = x, xSquared = x * x;
+
+        //taylor series sum
+        for(int i = 1; i <= 100; i += 2) {
+            result += term / i;
+            term *= xSquared;
+        }
+
+        //multiply by 2 as per taylor series formula
+        result *= 2;
+        //adjust for factors of 2 (ln(2) ≈ 0.693147)
+        result += k * 0.69314718056;
+
+        return result;
     }
 }
