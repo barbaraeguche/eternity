@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+=======
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -43,7 +46,16 @@
       </profile-state>
     </entry>
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="23" project-jdk-type="JavaSDK">
+=======
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="23" project-jdk-type="JavaSDK">
+>>>>>>> c8bf241b2e3ae115b3cfddef41a70c7d002e24f6
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
+>>>>>>> 1d030f8380e7f59b7fe2edf0218a8bdbd41e456f
+>>>>>>> 9e45aa685adb2acf8ebb462410edece08c899ecd
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
