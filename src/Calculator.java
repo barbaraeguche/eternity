@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Calculator extends JFrame {
+    boolean isDegreeMode = false;
     //initialize
     double number;
     char op;
@@ -27,6 +28,11 @@ public class Calculator extends JFrame {
     TranscendentalButton[] transcendentalButtons = new TranscendentalButton[transcendentalButtonsText.length];
     Functions functions = new Functions();
 
+    // Mode for radian and degree:
+    JRadioButton radianButton = new JRadioButton("Radian");
+    JRadioButton degreeButton = new JRadioButton("Degree");
+    ButtonGroup modeGroup = new ButtonGroup();
+
     /**
      * parameterized constructor that initializes the calculator's graphical frame and sets up components.
      * @param frameText the title text displayed on the calculator frame.
@@ -39,6 +45,24 @@ public class Calculator extends JFrame {
         displayLabel.setForeground(Color.WHITE);
         displayLabel.setFont(new Font("SansSerif", Font.BOLD, 24)); //display size and font
         add(displayLabel);
+
+        // Initialize Radian and Degree buttons
+        radianButton.setBounds(TOPX + 140, TOPY + 447, 80, 20); // Position Radian button
+        degreeButton.setBounds(TOPX + 140, TOPY + 467, 80, 20); // Position Degree button
+
+        // Set Radian as default selected
+        radianButton.setSelected(true);
+
+        // Add buttons to the ButtonGroup to enforce single selection
+        modeGroup.add(radianButton);
+        modeGroup.add(degreeButton);
+
+        // Add buttons to the frame
+        add(radianButton);
+        add(degreeButton);
+
+        radianButton.addActionListener(e -> isDegreeMode = false);
+        degreeButton.addActionListener(e -> isDegreeMode = true);
 
         //set the coordinates for digit buttons
         int digitX = TOPX + WIDTH + SPACE, digitY = TOPY + 2 * (HEIGHT + SPACE);
@@ -105,5 +129,29 @@ public class Calculator extends JFrame {
         String resText = "" + temp;
         if(resText.lastIndexOf(".0") > 0) resText = resText.substring(0, resText.length() - 2);
         return resText;
+    }
+
+    /**
+     * The function `setDegreeModeFalse` sets the `isDegreeMode` variable to false.
+     */
+    public void setDegreeModeFalse(){
+        this.isDegreeMode = false;
+    }
+
+    /**
+     * The function `setDegreeModeTrue` sets the `isDegreeMode` variable to true in Java.
+     */
+    public void setDegreeModeTrue(){
+        this.isDegreeMode = true;
+    }
+
+    /**
+     * The function `getIsDegreeMode` returns the value of the `isDegreeMode` boolean variable.
+     * 
+     * @return The method `getIsDegreeMode` is returning the value of the `isDegreeMode` variable,
+     * which is a boolean indicating whether the mode is in degrees or not.
+     */
+    public boolean getIsDegreeMode(){
+        return this.isDegreeMode;
     }
 }

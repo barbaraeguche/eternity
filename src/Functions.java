@@ -60,7 +60,7 @@ public class Functions {
      * @return the arc-cosine of the input in radians if it is between -1 and 1. else, an IllegalArgumentException is thrown with a message indicating the error.
      * @throws IllegalArgumentException if the value is not within the required domain of [-1 , 1]
      */
-    public double arcCosX(double[] initialDataSet) throws IllegalArgumentException {
+    public double arcCosX(double[] initialDataSet , boolean isDegreeMode) throws IllegalArgumentException {
         double x = initialDataSet[0];
         //check that input is within the domain of arccos
         if(x < -1.0 || x > 1.0) throw new IllegalArgumentException("Input must be in the range [-1, 1]");
@@ -70,7 +70,12 @@ public class Functions {
         for(int k = 0; k < maxIterations; k++) {
             sum += factorial(2 * k) / (Math.pow(4, k) * Math.pow(factorial(k), 2) * (2 * k + 1)) * Math.pow(x, 2 * k + 1);
         }
-        return Math.PI / 2 - sum;
+        double answer = Math.PI / 2 - sum;
+        if(isDegreeMode){
+            answer *= 180; 
+            answer /= Math.PI;
+        }
+        return answer;
     }
 
     /**
