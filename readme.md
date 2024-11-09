@@ -10,7 +10,7 @@ eternity is a scientific calculator designed to compute various transcendental f
 - **radio buttons**: options to switch between degree and radian modes for trigonometric calculations, ensuring flexibility in usage.
 
 ## the process ✍🏽
-<add here>
+
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
