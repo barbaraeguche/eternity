@@ -2,9 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Calculator extends JFrame {
-    //initialize
-    double number;
+    //variables
     char op;
+    double number;
+    boolean isDegreeMode = false;
+
+    //constants
     final int FRAME_WIDTH = 400, FRAME_HEIGHT = 630;
     final int HEIGHT = 40, WIDTH = 40, SPACE = 10;
     final int TOPX = 20, TOPY = 50;
@@ -27,6 +30,11 @@ public class Calculator extends JFrame {
     TranscendentalButton[] transcendentalButtons = new TranscendentalButton[transcendentalButtonsText.length];
     Functions functions = new Functions();
 
+    //mode for radian and degree
+    JRadioButton degreeButton = new JRadioButton("degree");
+    JRadioButton radianButton = new JRadioButton("radian");
+    ButtonGroup modeGroup = new ButtonGroup();
+
     /**
      * parameterized constructor that initializes the calculator's graphical frame and sets up components.
      * @param frameText the title text displayed on the calculator frame.
@@ -39,6 +47,24 @@ public class Calculator extends JFrame {
         displayLabel.setForeground(Color.WHITE);
         displayLabel.setFont(new Font("SansSerif", Font.BOLD, 24)); //display size and font
         add(displayLabel);
+
+        //set position of degree and radian buttons
+        radianButton.setBounds(TOPX + 140, TOPY + 447, 80, 20);
+        degreeButton.setBounds(TOPX + 140, TOPY + 467, 80, 20);
+
+        //ser radian as default selected
+        radianButton.setSelected(true);
+
+        //add buttons to the ButtonGroup to enforce single selection
+        modeGroup.add(degreeButton);
+        modeGroup.add(radianButton);
+
+        //add buttons to the frame
+        add(degreeButton);
+        add(radianButton);
+
+        radianButton.addActionListener(e -> isDegreeMode = false);
+        degreeButton.addActionListener(e -> isDegreeMode = true);
 
         //set the coordinates for digit buttons
         int digitX = TOPX + WIDTH + SPACE, digitY = TOPY + 2 * (HEIGHT + SPACE);
@@ -105,5 +131,20 @@ public class Calculator extends JFrame {
         String resText = "" + temp;
         if(resText.lastIndexOf(".0") > 0) resText = resText.substring(0, resText.length() - 2);
         return resText;
+    }
+
+    /**
+     * this function toggle the isDegreeMode variable.
+     */
+    public void toggleDegreeMode(){
+        this.isDegreeMode = !isDegreeMode;
+    }
+
+    /**
+     * this function returns the value of the isDegreeMode.
+     * @return return the isDegreeMode value.
+     */
+    public boolean getIsDegreeMode(){
+        return this.isDegreeMode;
     }
 }
