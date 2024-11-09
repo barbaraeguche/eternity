@@ -57,25 +57,35 @@ public class Functions {
     /**
      * this method calculates the arc-cosine of a given input.
      * @param initialDataSet the input for which we want to calculate the arc-cosine.
-     * @return the arc-cosine of the input in radians if it is between -1 and 1. else, an IllegalArgumentException is thrown with a message indicating the error.
+     * @param isDegreeMode booleans indicating whether the result should be in degrees(true) or radians(false).
+     * @return the arc-cosine of the input in radians or degrees if it is between -1 and 1.
      * @throws IllegalArgumentException if the value is not within the required domain of [-1 , 1]
      */
-    public double arcCosX(double[] initialDataSet , boolean isDegreeMode) throws IllegalArgumentException {
+    public double arcCosX(double[] initialDataSet, boolean isDegreeMode) throws IllegalArgumentException {
         double x = initialDataSet[0];
         //check that input is within the domain of arccos
         if(x < -1.0 || x > 1.0) throw new IllegalArgumentException("Input must be in the range [-1, 1]");
+
         //initialize variables
         double sum = 0; int maxIterations = 20; //higher value means more accuracy but slower computation
         //using taylor series approximation - calculate the term: (2k)! / (4^k * (k!)^2 * (2k + 1)) * x^(2k + 1)
         for(int k = 0; k < maxIterations; k++) {
             sum += factorial(2 * k) / (Math.pow(4, k) * Math.pow(factorial(k), 2) * (2 * k + 1)) * Math.pow(x, 2 * k + 1);
         }
+
         double answer = Math.PI / 2 - sum;
-        if(isDegreeMode){
-            answer *= 180; 
-            answer /= Math.PI;
-        }
+        if(isDegreeMode) { answer = (answer * 180) / Math.PI; }
         return answer;
+    }
+
+    /**
+     * this method calculates the logarithm of a given input with respect to base 10.
+     * @param x is a double representing the argument of log.
+     * @return the logarithm of a value with respect to a specified base.
+     */
+    public double logXBase10(double x) {
+        if(x <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(x) / ln(10);
     }
 
     /**
@@ -84,9 +94,8 @@ public class Functions {
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBaseB(double[] initialDataSet) {
-        double x = initialDataSet[0], b = initialDataSet[1];
-
-        return 1.0;
+        if(initialDataSet[0] <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(initialDataSet[0]) / ln(initialDataSet[1]);
     }
 
     /**
@@ -130,5 +139,36 @@ public class Functions {
         double sum = 0;
         for(double i: dataSet) { sum += i; }
         return sum / (double)dataSet.length;
+    }
+    /**
+     * this method calculates the logarithm of a given input with respect to base e. this is an approximation based on the Taylor Series on natural logarithm.
+     * @param x is a double representing the argument of log.
+     * @return the natural logarithm of a value with respect to e as its base.
+     */
+    public static double ln(double x) {
+        if(x <= 0) throw new IllegalArgumentException("x must be positive.");
+
+        //transform x to be close to 1 for faster convergence
+        int k = 0;
+        while(x > 2) {
+            x /= 2;
+            k++;
+        }
+
+        x = (x - 1) / (x + 1);
+        double result = 0.0, term = x, xSquared = x * x;
+
+        //taylor series sum
+        for(int i = 1; i <= 100; i += 2) {
+            result += term / i;
+            term *= xSquared;
+        }
+
+        //multiply by 2 as per taylor series formula
+        result *= 2;
+        //adjust for factors of 2 (ln(2) ≈ 0.693147)
+        result += k * 0.69314718056;
+
+        return result;
     }
 }
