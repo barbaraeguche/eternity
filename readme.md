@@ -9,6 +9,9 @@ eternity is a scientific calculator designed to compute various transcendental f
 - **special buttons**: features like `c` (clear), `ce` (clear entry), and `back` (delete last input) to help manage calculations efficiently.
 - **radio buttons**: options to switch between degree and radian modes for trigonometric calculations, ensuring flexibility in usage.
 
+## the process ✍🏽
+<add here>
+
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
 
@@ -29,7 +32,7 @@ java CalculatorDriver
 
 ## gallery 📸
 <details>
-  <summary>showcase</summary>
+  <summary>showcase</summary> <br>
 
   - **initial** <br>
   ![eternity](https://github.com/user-attachments/assets/f3abf9ca-05f2-4130-9fd4-b04838a050ee)
