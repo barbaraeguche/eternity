@@ -34,7 +34,7 @@ class OperatorButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String operationText = ((OperatorButton) e.getSource()).getText();
         String displayText = calculator.displayLabel.getText();
-
+        
         try {
             if(displayText.contains(",")) throw new TooManyArgumentsException();
         } catch (TooManyArgumentsException exc) {
