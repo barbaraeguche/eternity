@@ -1,8 +1,13 @@
 # eternity calculator ✖️
-
+eternity is a scientific calculator designed to compute various transcendental functions, integrating principles of design thinking, agile methodologies, and devops. 
 
 ## features 👾
-- **title**: description
+- **minimalistic ui**: a clean and intuitive interface that reduces distractions, allowing users to focus on their calculations effortlessly.
+- **transcendental buttons**: access advanced functions like `arccos(x)`, `sinh(x)`, `standard deviation`, and more for complex mathematical operations beyond basic arithmetic.
+- **digit buttons**: easy-to-use buttons for numbers `0 - 9`, along with `+/-` for sign changes, `.` for decimal input, and a `,` (comma) for calculating complex mathematical operations that require multiple inputs.
+- **operator buttons**: essential buttons for arithmetic operations `(+, -, x, /, %)` and functions like `sqrt` (square root), `1/x`, and a `=` to display calculated values.
+- **special buttons**: features like `c` (clear), `ce` (clear entry), and `back` (delete last input) to help manage calculations efficiently.
+- **radio buttons**: options to switch between degree and radian modes for trigonometric calculations, ensuring flexibility in usage.
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
