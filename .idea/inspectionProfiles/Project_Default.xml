@@ -7,6 +7,8 @@
       </Languages>
     </inspection_tool>
     <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+<<<<<<< HEAD
+=======
     <inspection_tool class="HtmlRequiredTitleElement" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="customHeaders">
@@ -15,11 +17,14 @@
         </set>
       </option>
     </inspection_tool>
+>>>>>>> c8bf241b2e3ae115b3cfddef41a70c7d002e24f6
     <inspection_tool class="PyAttributeOutsideInitInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyChainedComparisonsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="PyListCreationInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMethodMayBeStaticInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+<<<<<<< HEAD
+=======
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
@@ -32,6 +37,7 @@
         </value>
       </option>
     </inspection_tool>
+>>>>>>> c8bf241b2e3ae115b3cfddef41a70c7d002e24f6
     <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
@@ -72,7 +78,10 @@
         </list>
       </option>
     </inspection_tool>
+<<<<<<< HEAD
+=======
     <inspection_tool class="RedundantCast" enabled="false" level="WARNING" enabled_by_default="false" />
+>>>>>>> c8bf241b2e3ae115b3cfddef41a70c7d002e24f6
     <inspection_tool class="SqlDialectInspection" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>
