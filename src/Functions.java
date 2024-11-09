@@ -74,14 +74,23 @@ public class Functions {
     }
 
     /**
+     * this method calculates the logarithm of a given input with respect to base 10.
+     * @param x is a double representing the argument of log.
+     * @return the logarithm of a value with respect to a specified base.
+     */
+    public double logXBase10(double x) {
+        if(x <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(x) / ln(10);
+    }
+
+    /**
      * this method calculates the logarithm of a given input with respect to a given base.
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBaseB(double[] initialDataSet) {
-        double x = initialDataSet[0], b = initialDataSet[1];
-
-        return 1.0;
+        if(initialDataSet[0] <= 0) throw new ArithmeticException("Error: Math Error");
+        return ln(initialDataSet[0]) / ln(initialDataSet[1]);
     }
 
     /**
@@ -125,5 +134,36 @@ public class Functions {
         double sum = 0;
         for(double i: dataSet) { sum += i; }
         return sum / (double)dataSet.length;
+    }
+    /**
+     * this method calculates the logarithm of a given input with respect to base e. this is an approximation based on the Taylor Series on natural logarithm.
+     * @param x is a double representing the argument of log.
+     * @return the natural logarithm of a value with respect to e as its base.
+     */
+    public static double ln(double x) {
+        if(x <= 0) throw new IllegalArgumentException("x must be positive.");
+
+        //transform x to be close to 1 for faster convergence
+        int k = 0;
+        while(x > 2) {
+            x /= 2;
+            k++;
+        }
+
+        x = (x - 1) / (x + 1);
+        double result = 0.0, term = x, xSquared = x * x;
+
+        //taylor series sum
+        for(int i = 1; i <= 100; i += 2) {
+            result += term / i;
+            term *= xSquared;
+        }
+
+        //multiply by 2 as per taylor series formula
+        result *= 2;
+        //adjust for factors of 2 (ln(2) ≈ 0.693147)
+        result += k * 0.69314718056;
+
+        return result;
     }
 }
