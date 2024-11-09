@@ -2,10 +2,12 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Calculator extends JFrame {
-    boolean isDegreeMode = false;
-    //initialize
-    double number;
+    //variables
     char op;
+    double number;
+    boolean isDegreeMode = false;
+
+    //constants
     final int FRAME_WIDTH = 400, FRAME_HEIGHT = 630;
     final int HEIGHT = 40, WIDTH = 40, SPACE = 10;
     final int TOPX = 20, TOPY = 50;
@@ -28,9 +30,9 @@ public class Calculator extends JFrame {
     TranscendentalButton[] transcendentalButtons = new TranscendentalButton[transcendentalButtonsText.length];
     Functions functions = new Functions();
 
-    // Mode for radian and degree:
-    JRadioButton radianButton = new JRadioButton("Radian");
-    JRadioButton degreeButton = new JRadioButton("Degree");
+    //mode for radian and degree
+    JRadioButton degreeButton = new JRadioButton("degree");
+    JRadioButton radianButton = new JRadioButton("radian");
     ButtonGroup modeGroup = new ButtonGroup();
 
     /**
@@ -46,20 +48,20 @@ public class Calculator extends JFrame {
         displayLabel.setFont(new Font("SansSerif", Font.BOLD, 24)); //display size and font
         add(displayLabel);
 
-        // Initialize Radian and Degree buttons
-        radianButton.setBounds(TOPX + 140, TOPY + 447, 80, 20); // Position Radian button
-        degreeButton.setBounds(TOPX + 140, TOPY + 467, 80, 20); // Position Degree button
+        //set position of degree and radian buttons
+        radianButton.setBounds(TOPX + 140, TOPY + 447, 80, 20);
+        degreeButton.setBounds(TOPX + 140, TOPY + 467, 80, 20);
 
-        // Set Radian as default selected
+        //ser radian as default selected
         radianButton.setSelected(true);
 
-        // Add buttons to the ButtonGroup to enforce single selection
-        modeGroup.add(radianButton);
+        //add buttons to the ButtonGroup to enforce single selection
         modeGroup.add(degreeButton);
+        modeGroup.add(radianButton);
 
-        // Add buttons to the frame
-        add(radianButton);
+        //add buttons to the frame
         add(degreeButton);
+        add(radianButton);
 
         radianButton.addActionListener(e -> isDegreeMode = false);
         degreeButton.addActionListener(e -> isDegreeMode = true);
@@ -132,24 +134,15 @@ public class Calculator extends JFrame {
     }
 
     /**
-     * The function `setDegreeModeFalse` sets the `isDegreeMode` variable to false.
+     * this function toggle the isDegreeMode variable.
      */
-    public void setDegreeModeFalse(){
-        this.isDegreeMode = false;
+    public void toggleDegreeMode(){
+        this.isDegreeMode = !isDegreeMode;
     }
 
     /**
-     * The function `setDegreeModeTrue` sets the `isDegreeMode` variable to true in Java.
-     */
-    public void setDegreeModeTrue(){
-        this.isDegreeMode = true;
-    }
-
-    /**
-     * The function `getIsDegreeMode` returns the value of the `isDegreeMode` boolean variable.
-     * 
-     * @return The method `getIsDegreeMode` is returning the value of the `isDegreeMode` variable,
-     * which is a boolean indicating whether the mode is in degrees or not.
+     * this function returns the value of the isDegreeMode.
+     * @return return the isDegreeMode value.
      */
     public boolean getIsDegreeMode(){
         return this.isDegreeMode;
