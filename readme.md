@@ -29,10 +29,10 @@ java CalculatorDriver
 
 ## gallery 📸
 <details>
-  <summary>showcase</summary>
+  <summary>showcase</summary> <br>
 
-  - **calculator**
-  
+  - **initial** <br>
+  ![eternity](https://github.com/user-attachments/assets/f3abf9ca-05f2-4130-9fd4-b04838a050ee)
 </details>
 
 ## video 📸
