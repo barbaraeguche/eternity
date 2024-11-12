@@ -11,6 +11,7 @@ eternity is a scientific calculator designed to compute various transcendental f
 
 ## the process ✍🏽
 
+## how to use ❓
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
