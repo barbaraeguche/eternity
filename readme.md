@@ -16,13 +16,13 @@ eternity is a scientific calculator designed to compute various transcendental f
 
 - **ArcCos function**: 
 1. **Switch to Radian or Degree Mode**:  
-   Depending on your calculation, make sure the calculator is set to radians or degrees. You can usually toggle this in the settings.
+    At first choose which mode you want answer in. There are 2 modes: Radian and Degree.
 
 2. **Locate the Arccos Button**:  
-   This is often labeled as `cos⁻¹` or may be a secondary function of the cosine button. You may need to press a `SHIFT` or `2ND` button before pressing `cos` to access it.
+   This is labeled as `arccos(x)` You may need to write the number you want to find arccos of, then press the button.
 
 3. **Input the Value**:  
-   Enter the value whose arccosine you want to find. The value must be between -1 and 1, as the arccos function is only defined within this range.
+   Enter the value whose arccosine you want to find. The value must be between -1 and 1, as the arccos function is only defined within this range. If you don't put numbers in the range you will see a warning.
 
 4. **Press Enter/Equals**:  
    The calculator will return the angle whose cosine is equal to the input value.
@@ -30,10 +30,9 @@ eternity is a scientific calculator designed to compute various transcendental f
 **Example**:  
 To find `arccos(0.5)` in degrees:
 ```
-SHIFT + cos → 0.5 → =
+    0.5 → arccos
 ```
-
-Result: 60° (if in degree mode), 1.0472 (if in radian mode).
+Result: 60° (if in degree mode) or 1.0477 (if in radian mode).
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
