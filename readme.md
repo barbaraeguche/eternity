@@ -12,6 +12,7 @@ eternity is a scientific calculator designed to compute various transcendental f
 ## the process ✍🏽
 
 ## how to use ❓
+- **Logarithmic functions**: If you want to use log with base 10, you would put in the number you want as an argument and then click `log_b(x)`.. If you want to use a different base than 10, you put in what you calculate first, then a `,` (comma) to seperate the arguments, followed by your number for the base.
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
