@@ -37,7 +37,7 @@ class TranscendentalButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String transcendentalText = ((TranscendentalButton) e.getSource()).getText();
         String displayText = calculator.displayLabel.getText();
-        DecimalFormat df = new DecimalFormat("#.00"); double result;
+        DecimalFormat df = new DecimalFormat("#.00"); double result = 0;
 
         //transform string to list of parameters
         double[] parameterList = Stream.of(displayText.split(",")).mapToDouble(Double::parseDouble).toArray();
@@ -76,6 +76,13 @@ class TranscendentalButton extends JButton implements ActionListener {
                 	}
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
+                case "ln(x)":
+                	if(parameterList.length >1) throw new TooManyArgumentsException();
+                	else {
+                		result = calculator.functions.ln(parameterList[0]);
+                		calculator.displayLabel.setText((Calculator.getFormattedText(result)));
+                	}
+                	break;
                 case "sinh(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
                     result = calculator.functions.sinHX(parameterList);

@@ -16,7 +16,7 @@ public class Calculator extends JFrame {
     final String[] digitButtonsText = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", ".", "," };
     final String[] operatorButtonsText = { "/", "sqrt", "x", "-", "1/x", "+", "=", "%" };
     final String[] specialButtonsText = { "Back", "C", "CE" };
-    final String[] transcendentalButtonsText = { "st.dev", "x^y", "(ab)^x", "mad", "arccos(x)", "log_b(x)", "sinh(x)" };
+    final String[] transcendentalButtonsText = { "st.dev", "x^y", "(ab)^x", "mad", "arccos(x)", "log_b(x)","ln(x)", "sinh(x)" };
     boolean setClear = true;
 
     //initialize labels
@@ -49,8 +49,8 @@ public class Calculator extends JFrame {
         add(displayLabel);
 
         //set position of degree and radian buttons
-        radianButton.setBounds(TOPX + 140, TOPY + 447, 80, 20);
-        degreeButton.setBounds(TOPX + 140, TOPY + 467, 80, 20);
+        radianButton.setBounds(TOPX + 240, TOPY + 447, 80, 20);
+        degreeButton.setBounds(TOPX + 240, TOPY + 467, 80, 20);
 
         //ser radian as default selected
         radianButton.setSelected(true);
@@ -128,7 +128,6 @@ public class Calculator extends JFrame {
      * @return a string representation of the double value, without ".0" if it represents a whole number.
      */
     static String getFormattedText(double temp) {
-        System.out.println(temp);
     	String resText = "" + temp;
         if(resText.lastIndexOf(".0") > 0) resText = resText.substring(0, resText.length() - 2);
         return resText;
