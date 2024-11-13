@@ -128,7 +128,8 @@ public class Calculator extends JFrame {
      * @return a string representation of the double value, without ".0" if it represents a whole number.
      */
     static String getFormattedText(double temp) {
-        String resText = "" + temp;
+        System.out.println(temp);
+    	String resText = "" + temp;
         if(resText.lastIndexOf(".0") > 0) resText = resText.substring(0, resText.length() - 2);
         return resText;
     }
