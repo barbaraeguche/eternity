@@ -71,6 +71,9 @@ class TranscendentalButton extends JButton implements ActionListener {
                     if(parameterList.length == 1) result = calculator.functions.logXBase10(parameterList[0]);
                     else if(parameterList.length == 2) result = calculator.functions.logXBaseB(parameterList);
                     else throw new TooManyArgumentsException();
+                    if(parameterList[0]==1) {
+                		calculator.displayLabel.setText("0");
+                	}
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "sinh(x)":
