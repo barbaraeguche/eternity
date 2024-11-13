@@ -14,6 +14,26 @@ eternity is a scientific calculator designed to compute various transcendental f
 ## how to use ❓
 - **Logarithmic functions**: If you want to use log with base 10, you would put in the number, using the digit buttons `0 - 9`, you want as an argument and then click `log_b(x)` to get the result. If you want euler (e) as your base, put in the number into the display using the digit buttons `0 - 9` and click `ln(x)` for the result. If you want to use a different base than 10 or euler (e), you put in what you calculate using buttons `0 - 9`, then a `,` (comma) to seperate the arguments, followed by your number using digit buttons `0 - 9` for the base. It should look like x,b in the display. x being the argument to calculate logarithm and b being the base of the logarithm.
 
+- **ArcCos function**: 
+1. **Switch to Radian or Degree Mode**:  
+   Depending on your calculation, make sure the calculator is set to radians or degrees. You can usually toggle this in the settings.
+
+2. **Locate the Arccos Button**:  
+   This is often labeled as `cos⁻¹` or may be a secondary function of the cosine button. You may need to press a `SHIFT` or `2ND` button before pressing `cos` to access it.
+
+3. **Input the Value**:  
+   Enter the value whose arccosine you want to find. The value must be between -1 and 1, as the arccos function is only defined within this range.
+
+4. **Press Enter/Equals**:  
+   The calculator will return the angle whose cosine is equal to the input value.
+
+**Example**:  
+To find `arccos(0.5)` in degrees:
+```
+SHIFT + cos → 0.5 → =
+```
+Result: 60° (if in degree mode).
+
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
 
