@@ -56,26 +56,7 @@ class DigitButton extends JButton implements ActionListener {
             case "+/-" -> {
                 String currentText = calculator.displayLabel.getText();
                 if(currentText.contains(",")) {
-                    int numHolder = 0;
-                    StringBuilder holder = new StringBuilder();
-                    for(int i = currentText.length() - 1; i >= 0; i--) {
-                        if(currentText.charAt(i) == '-') {
-                            numHolder += 1;
-                            break;
-                        }
-                        if(currentText.charAt(i) == ',') {
-                            holder.insert(0,'-');
-                            break;
-                        }
-                        holder.insert(0, currentText.charAt(i));
-                        numHolder += 1;
-                    }
-
-                    StringBuilder result = new StringBuilder();
-                    for(int i = 0; i < currentText.length() - numHolder; i++) {
-                        result.append(currentText.charAt(i));
-                    }
-                    result.append(holder);
+                    StringBuilder result = getUpdatedPositiveNegativeList(currentText);
                     calculator.displayLabel.setText(String.valueOf(result));
                 } else {
                     calculator.displayLabel.setText(Double.toString(Double.parseDouble(calculator.displayLabel.getText()) * -1));
@@ -95,5 +76,29 @@ class DigitButton extends JButton implements ActionListener {
         } else {
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
         }
+    }
+
+    private static StringBuilder getUpdatedPositiveNegativeList(String currentText) {
+        int numHolder = 0;
+        StringBuilder holder = new StringBuilder();
+        for(int i = currentText.length() - 1; i >= 0; i--) {
+            if(currentText.charAt(i) == '-') {
+                numHolder += 1;
+                break;
+            }
+            if(currentText.charAt(i) == ',') {
+                holder.insert(0,'-');
+                break;
+            }
+            holder.insert(0, currentText.charAt(i));
+            numHolder += 1;
+        }
+
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < currentText.length() - numHolder; i++) {
+            result.append(currentText.charAt(i));
+        }
+        result.append(holder);
+        return result;
     }
 }
