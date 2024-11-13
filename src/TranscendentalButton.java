@@ -65,7 +65,7 @@ class TranscendentalButton extends JButton implements ActionListener {
                 case "arccos(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
                     result = calculator.functions.arcCosX(parameterList, calculator.isDegreeMode);
-                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    calculator.displayLabel.setText(String.format("%.4f" , result));
                     break;
                 case "log_b(x)":
                     if(parameterList.length == 1) result = calculator.functions.logXBase10(parameterList[0]);
