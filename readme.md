@@ -32,7 +32,8 @@ To find `arccos(0.5)` in degrees:
 ```
 SHIFT + cos → 0.5 → =
 ```
-Result: 60° (if in degree mode).
+
+Result: 60° (if in degree mode), 1.0472 (if in radian mode).
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
