@@ -49,12 +49,14 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
                     break;
                 case "x^y":
-                    if(parameterList.length != 2) throw new TooManyArgumentsException();
+                    if(parameterList.length > 2) throw new TooManyArgumentsException();
+                    if(parameterList.length < 2) throw new TooFewArgumentsException();
                     result = calculator.functions.xPowerY(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "(ab)^x":
-                    if(parameterList.length != 3) throw new TooManyArgumentsException();
+                    if(parameterList.length > 3) throw new TooManyArgumentsException();
+                    if(parameterList.length < 3) throw new TooFewArgumentsException();
                     result = calculator.functions.abPowerX(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
@@ -77,7 +79,7 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "ln(x)":
-                	if(parameterList.length >1) throw new TooManyArgumentsException();
+                	if(parameterList.length > 1) throw new TooManyArgumentsException();
                 	else {
                 		result = calculator.functions.ln(parameterList[0]);
                 		calculator.displayLabel.setText((Calculator.getFormattedText(result)));
@@ -91,6 +93,7 @@ class TranscendentalButton extends JButton implements ActionListener {
             }
         } catch(IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());
         } catch(TooManyArgumentsException exc) { calculator.displayLabel.setText("Error: Too Many Arguments");
+        } catch(TooFewArgumentsException exc) { calculator.displayLabel.setText("Error: Too Few Arguments");
         } catch(Exception err) { calculator.displayLabel.setText("An error occurred: " + err.getMessage());
         }
     }
