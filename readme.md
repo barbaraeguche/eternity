@@ -52,7 +52,7 @@ javac CalculatorDriver.java
 java CalculatorDriver
 ```
 
-## gallery 
+## gallery 📸
 <details>
   <summary>showcase</summary> <br>
 
