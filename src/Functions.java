@@ -23,10 +23,72 @@ public class Functions {
      * @param initialDataSet an array of doubles representing the dataset.
      * @return the calculated x^y as a double.
      */
-    public double xPowerY(double[] initialDataSet) {
-        double x = initialDataSet[0], y = initialDataSet[1];
-
-        return 1.0;
+    public class ExponentialFunction { // Function to calculate exponential function (base^exponent) without using Math library
+        public static double power(double base, double exponent) {
+            if (base == 0) {
+                if (exponent > 0) return 0;
+                else throw new ArithmeticException("0 raised to a negative or zero exponent is undefined.");
+            }
+            if (exponent % 1 == 0) {
+                return integerPower(base, (int) exponent);
+            }
+            boolean isNegativeExponent = exponent < 0;
+            if (isNegativeExponent) {
+                exponent = -exponent;
+            }
+            if (base < 0 && exponent % 1 != 0) {
+                throw new ArithmeticException("Negative base with fractional exponent is undefined for real numbers.");
+            }
+            double result = exponential(exponent * logarithm(base));
+            return isNegativeExponent ? 1.0 / result : result;
+        }
+        private static double integerPower(double base, double exponent) { // The function to calculate integer powers by multiplying 'base' repeatedly
+            double result = 1.0;
+            boolean isNegativeExponent = exponent < 0;
+            if (isNegativeExponent) {
+                exponent = -exponent;
+            }
+            for (double i = 0; i < exponent; i++) {
+                result *= base;
+            }
+            return isNegativeExponent ? 1.0 / result : result;
+        }
+        private static double exponential(double x) { // Approximate the exponential function e^x using Taylor series expansion method
+            double result = 1;
+            double term = 1;
+            for (double i = 1; i <= 20; i++) {
+                term *= x / i;
+                result += term;
+            }
+            return result;
+        }
+        private static double logarithm(double x) { // Approximate natural logarithm ln(x) using a Taylor series expansion for ln(1 + y)
+            if (x <= 0) {
+                throw new ArithmeticException("Logarithm of non-positive number is undefined.");
+            }
+            double y = (x - 1) / (x + 1);
+            double result = 0.0;
+            double term = y; // Term means each successful component in the Taylor series expansion
+            for (double i = 1; i <= 20; i += 2) {
+                result += term / i;
+                term *= y * y;
+            }
+            return 2 * result;
+        }
+        private static double parseFractionalInput(String input) { // Method to parse a string input as a double, including fractions like "2/3"
+            if (input.contains("/")) {
+                String[] parts = input.split("/");
+                if (parts.length == 2) {
+                    double numerator = Double.parseDouble(parts[0]);
+                    double denominator = Double.parseDouble(parts[1]);
+                    return numerator / denominator;
+                } else {
+                    throw new IllegalArgumentException("Invalid fraction format. Use 'numerator/denominator'.");
+                }
+            } else {
+                return Double.parseDouble(input); // Parse directly if not a fraction
+            }
+        }
     }
 
     /**
