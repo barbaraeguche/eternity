@@ -16,7 +16,7 @@ public class Calculator extends JFrame {
     final String[] digitButtonsText = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "+/-", ".", "," };
     final String[] operatorButtonsText = { "/", "sqrt", "x", "-", "1/x", "+", "=", "%" };
     final String[] specialButtonsText = { "Back", "C", "CE" };
-    final String[] transcendentalButtonsText = { "st.dev", "x^y", "(ab)^x", "mad", "arccos(x)", "log_b(x)","ln(x)", "sinh(x)" };
+    final String[] transcendentalButtonsText = { "st.dev", "x^y", "(ab)^x", "mad", "arccos(x)", "log_b(x)", "ln(x)", "sinh(x)" };
     boolean setClear = true;
 
     //initialize labels
