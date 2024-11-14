@@ -49,8 +49,8 @@ public class Calculator extends JFrame {
         add(displayLabel);
 
         //set position of degree and radian buttons
-        radianButton.setBounds(TOPX + 240, TOPY + 447, 80, 20);
-        degreeButton.setBounds(TOPX + 240, TOPY + 467, 80, 20);
+        radianButton.setBounds(TOPX + 225, TOPY + 447, 80, 20);
+        degreeButton.setBounds(TOPX + 225, TOPY + 467, 80, 20);
 
         //ser radian as default selected
         radianButton.setSelected(true);
@@ -63,8 +63,9 @@ public class Calculator extends JFrame {
         add(degreeButton);
         add(radianButton);
 
-        radianButton.addActionListener(e -> isDegreeMode = false);
-        degreeButton.addActionListener(e -> isDegreeMode = true);
+        //toggle between mode groups
+        radianButton.addActionListener(_ -> toggleModes(false));
+        degreeButton.addActionListener(_ -> toggleModes(true));
 
         //set the coordinates for digit buttons
         int digitX = TOPX + WIDTH + SPACE, digitY = TOPY + 2 * (HEIGHT + SPACE);
@@ -136,8 +137,8 @@ public class Calculator extends JFrame {
     /**
      * this function toggle the isDegreeMode variable.
      */
-    public void toggleDegreeMode(){
-        this.isDegreeMode = !isDegreeMode;
+    public void toggleModes(boolean newValue){
+        this.isDegreeMode = newValue;
     }
 
     /**

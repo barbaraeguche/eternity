@@ -37,7 +37,8 @@ class TranscendentalButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String transcendentalText = ((TranscendentalButton) e.getSource()).getText();
         String displayText = calculator.displayLabel.getText();
-        DecimalFormat df = new DecimalFormat("#.00"); double result = 0;
+        DecimalFormat df1 = new DecimalFormat("#.00"), df2 = new DecimalFormat("#.00000");
+        double result;
 
         //transform string to list of parameters
         double[] parameterList = Stream.of(displayText.split(",")).mapToDouble(Double::parseDouble).toArray();
@@ -46,7 +47,7 @@ class TranscendentalButton extends JButton implements ActionListener {
             switch(transcendentalText) {
                 case "st.dev":
                     result = calculator.functions.standardDeviation(parameterList);
-                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df1.format(result))));
                     break;
                 case "x^y":
                     if(parameterList.length != 2) throw new TooManyArgumentsException();
@@ -60,23 +61,23 @@ class TranscendentalButton extends JButton implements ActionListener {
                     break;
                 case "mad":
                     result = calculator.functions.meanAbsoluteDeviation(parameterList);
-                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df.format(result))));
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df1.format(result))));
                     break;
                 case "arccos(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
-                    result = calculator.functions.arcCosX(parameterList, calculator.isDegreeMode);
+                    result = calculator.functions.arcCosX(parameterList, calculator.getIsDegreeMode());
                     calculator.displayLabel.setText(String.format("%.4f" , result));
                     break;
                 case "log_b(x)":
                     if(parameterList.length == 1) result = calculator.functions.logXBase10(parameterList[0]);
                     else if(parameterList.length == 2) result = calculator.functions.logXBaseB(parameterList);
                     else throw new TooManyArgumentsException();
-                    calculator.displayLabel.setText(Calculator.getFormattedText(result));
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df2.format(result))));
                     break;
                 case "ln(x)":
                 	if(parameterList.length != 1) throw new TooManyArgumentsException();
                 	result = calculator.functions.ln(parameterList[0]);
-                	calculator.displayLabel.setText((Calculator.getFormattedText(result)));
+                    calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df2.format(result))));
                 	break;
                 case "sinh(x)":
                     if(parameterList.length != 1) throw new TooManyArgumentsException();
