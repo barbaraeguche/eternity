@@ -12,11 +12,31 @@ eternity is a scientific calculator designed to compute various transcendental f
 ## the process ✍🏽
 
 ## how to use ❓
-- **deviation functions:**
-  - st.dev(standard deviation), mad (mean absolute deviation)
+- **deviation functions**:
+  - to calculate a standard deviation:
+    - enter a list of numbers, each separated by a comma `,`, using the digit buttons `0 - 9`,
+    - click `st.dev` to obtain the result.
+   
+  - to calculate a mean absolute deviation:
+    - enter a list of numbers, each separated by a comma `,`, using the digit buttons `0 - 9`,
+    - click `mad` to obtain the result.
 
 - **power functions:** 
-  - x^y, (ab)^x
+  - to calculate (x^y):
+    - enter the base (x) using the digit buttons `0 - 9`,
+    - use a `,` (comma) to separate the arguments,
+    - follow with the exponent (y) using the digit buttons `0 - 9`,
+    - the display should show `x,y`, where (x) is the base raised to the power of (y),
+    - click `(x^y)` to obtain the result.
+
+  - to calculate a(b^x):
+    - enter a multiplier (a) using the digit buttons `0 - 9`,
+    - use a , (comma) to separate the numbers,
+    - enter a base (b) using the digit buttons `0 - 9`,
+    - use a , (comma) to separate the numbers,
+    - enter the exponent (x) using the digit buttons `0 - 9`,
+    - the display should show `a,b,x`, where (a) is a multiplier, and (b) is the base raised to the power of (x),
+    - click `a(b^x)` to obtain the result.
 
 - **trigonometric function:**
   - toggle between radian or degree mode first using the radio buttons,
@@ -37,14 +57,15 @@ eternity is a scientific calculator designed to compute various transcendental f
     - click `ln(x)` for the result.
     
   - for logarithms with a base other than 10 or e:
-    - enter the number you want to calculate using the digit buttons `0 - 9`,
+    - enter a number (x) using the digit buttons `0 - 9`,
     - use a `,` (comma) to separate the arguments,
-    - follow with the base number using the digit buttons `0 - 9`,
-    - the display should show it as `x,b`, where `x` is the argument and `b` is the base,
+    - follow with the base (b) using the digit buttons `0 - 9`,
+    - the display should show `x,b`, where `x` is the argument and `b` is the base,
     - click `log_b(x)` to obtain the result.
 
 - **hyperbolic function:** 
-  - sinh(x)
+  - enter the number you want to calculate using the digit buttons `0 - 9`,
+  - click `sinh(x)` for the result.
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
@@ -57,6 +78,7 @@ git clone https://github.com/barbaraeguche/comp354-eternity.git
 - **navigate to the project directory:**
 ```bash
 cd comp354-eternity
+cd src
 ```
 - **run the project:**
 ```bash
