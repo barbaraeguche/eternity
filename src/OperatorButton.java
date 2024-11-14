@@ -36,8 +36,8 @@ class OperatorButton extends JButton implements ActionListener {
         String displayText = calculator.displayLabel.getText();
         
         try {
-            if(displayText.contains(",")) throw new TooManyArgumentsException();
-        } catch (TooManyArgumentsException exc) {
+            if(displayText.contains(",")) throw new TooManyArguments("Error: Too Many Arguments");
+        } catch (TooManyArguments exc) {
             calculator.displayLabel.setText("Error: Too Many Parameters");
             return;
         }
