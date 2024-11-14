@@ -1,6 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * this is the Calculator class. it serves to format the eternity's ui to ensures a smooth user experience through an intuitive interface.
+ */
 public class Calculator extends JFrame {
     //variables
     char op;

@@ -50,12 +50,16 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df1.format(result))));
                     break;
                 case "x^y":
-                    if(parameterList.length != 2) throw new TooManyArgumentsException();
+                    if(parameterList.length < 2) throw new TooFewArguments("Error: Too Few Arguments");
+                    if(parameterList.length > 2) throw new TooManyArguments("Error: Too Many Arguments");
+
                     result = calculator.functions.xPowerY(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
                 case "(ab)^x":
-                    if(parameterList.length != 3) throw new TooManyArgumentsException();
+                    if(parameterList.length < 3) throw new TooFewArguments("Error: Too Few Arguments");
+                    if(parameterList.length > 3) throw new TooManyArguments("Error: Too Many Arguments");
+
                     result = calculator.functions.abPowerX(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
@@ -64,29 +68,32 @@ class TranscendentalButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df1.format(result))));
                     break;
                 case "arccos(x)":
-                    if(parameterList.length != 1) throw new TooManyArgumentsException();
+                    if(parameterList.length > 1) throw new TooManyArguments("Error: Too Many Arguments");
+
                     result = calculator.functions.arcCosX(parameterList, calculator.getIsDegreeMode());
                     calculator.displayLabel.setText(String.format("%.4f" , result));
                     break;
                 case "log_b(x)":
                     if(parameterList.length == 1) result = calculator.functions.logXBase10(parameterList[0]);
                     else if(parameterList.length == 2) result = calculator.functions.logXBaseB(parameterList);
-                    else throw new TooManyArgumentsException();
+                    else throw new TooManyArguments("Error: Too Many Arguments");
+
                     calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df2.format(result))));
                     break;
                 case "ln(x)":
-                	if(parameterList.length != 1) throw new TooManyArgumentsException();
-                	result = calculator.functions.ln(parameterList[0]);
+                    if(parameterList.length > 1) throw new TooManyArguments("Error: Too Many Arguments");
+
+                    result = calculator.functions.ln(parameterList[0]);
                     calculator.displayLabel.setText(Calculator.getFormattedText(Double.parseDouble(df2.format(result))));
                 	break;
                 case "sinh(x)":
-                    if(parameterList.length != 1) throw new TooManyArgumentsException();
+                    if(parameterList.length > 1) throw new TooManyArguments("Error: Too Many Arguments");
+
                     result = calculator.functions.sinHX(parameterList);
                     calculator.displayLabel.setText(Calculator.getFormattedText(result));
                     break;
             }
-        } catch(IllegalArgumentException err) { calculator.displayLabel.setText(err.getMessage());
-        } catch(TooManyArgumentsException exc) { calculator.displayLabel.setText("Error: Too Many Arguments");
+        } catch(IllegalArgumentException | TooFewArguments | TooManyArguments err) { calculator.displayLabel.setText(err.getMessage());
         } catch(Exception err) { calculator.displayLabel.setText("An error occurred: " + err.getMessage());
         }
     }

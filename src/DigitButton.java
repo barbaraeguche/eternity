@@ -28,7 +28,7 @@ class DigitButton extends JButton implements ActionListener {
     /**
      * this method checks if the given string contains a decimal point.
      * @param string the string to be checked for the presence of a period.
-     * @return true if the string contains a period; false otherwise
+     * @return true if the string contains a period; false otherwise.
      */
     static boolean isInString(String string) { return string.contains("."); }
 
@@ -53,7 +53,16 @@ class DigitButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
                 } return;
             }
-            case "+/-" -> calculator.displayLabel.setText(Double.toString(Double.parseDouble(calculator.displayLabel.getText()) * -1));
+            case "+/-" -> {
+                String currentText = calculator.displayLabel.getText();
+
+                if(currentText.contains(",")) {
+                    StringBuilder result = updateSignList(currentText);
+                    calculator.displayLabel.setText(String.valueOf(result));
+                } else {
+                    calculator.displayLabel.setText(Double.toString(Double.parseDouble(calculator.displayLabel.getText()) * -1));
+                }
+            }
             case "," -> calculator.displayLabel.setText(calculator.displayLabel.getText() + ",");
         }
 
@@ -68,5 +77,38 @@ class DigitButton extends JButton implements ActionListener {
         } else {
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
         }
+    }
+
+    /**
+     * this function updates the sign list based on the current text.
+     * @param currentText the input string to process.
+     * @return a StringBuilder containing the updated sign list.
+     */
+    private static StringBuilder updateSignList(String currentText) {
+        StringBuilder holder = new StringBuilder(), result = new StringBuilder();
+        int signCount = 0;
+
+        for(int i = currentText.length() - 1; i >= 0; i--) {
+            char currentChar = currentText.charAt(i);
+
+            if(currentChar == '-') {
+                signCount++;
+                break;
+            }
+            if(currentChar == ',') {
+                holder.insert(0,'-');
+                break;
+            }
+
+            holder.insert(0, currentChar);
+            signCount++;
+        }
+
+        for(int i = 0; i < currentText.length() - signCount; i++) {
+            result.append(currentText.charAt(i));
+        }
+        result.append(holder);
+
+        return result;
     }
 }
