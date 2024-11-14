@@ -12,27 +12,39 @@ eternity is a scientific calculator designed to compute various transcendental f
 ## the process ✍🏽
 
 ## how to use ❓
-- **Logarithmic functions**: If you want to use log with base 10, you would put in the number, using the digit buttons `0 - 9`, you want as an argument and then click `log_b(x)` to get the result. If you want euler (e) as your base, put in the number into the display using the digit buttons `0 - 9` and click `ln(x)` for the result. If you want to use a different base than 10 or euler (e), you put in what you calculate using buttons `0 - 9`, then a `,` (comma) to seperate the arguments, followed by your number using digit buttons `0 - 9` for the base. It should look like x,b in the display. x being the argument to calculate logarithm and b being the base of the logarithm.
+- **deviation functions:**
+  - st.dev(standard deviation), mad (mean absolute deviation)
 
-- **ArcCos function**: 
-1. **Switch to Radian or Degree Mode**:  
-    At first choose which mode you want answer in. There are 2 modes: Radian and Degree.
+- **power functions:** 
+  - x^y, (ab)^x
 
-2. **Locate the Arccos Button**:  
-   This is labeled as `arccos(x)` You may need to write the number you want to find arccos of, then press the button.
+- **trigonometric function:**
+  - toggle between radian or degree mode first using the radio buttons,
+  - enter the number you want to calculate using the digit buttons `0 - 9` (the number must be between -1 and 1),
+  - click `arccos(x)` for the result.
+  - ```
+    example: 0.5 -> arccos(x)
+    result: 60° (if in degree mode) or 1.0472 (if in radian mode).
+    ```
+  
+- **logarithm functions:**
+  - to calculate the logarithm with base 10:
+    - enter the desired number using the digit buttons `0 - 9`,
+    - click `log_b(x)` to obtain the result.
+    
+  - to use euler’s number (e) as the base:
+    - input the number using the digit buttons `0 - 9`,
+    - click `ln(x)` for the result.
+    
+  - for logarithms with a base other than 10 or e:
+    - enter the number you want to calculate using the digit buttons `0 - 9`,
+    - use a `,` (comma) to separate the arguments,
+    - follow with the base number using the digit buttons `0 - 9`,
+    - the display should show it as `x,b`, where `x` is the argument and `b` is the base,
+    - click `log_b(x)` to obtain the result.
 
-3. **Input the Value**:  
-   Enter the value whose arccosine you want to find. The value must be between -1 and 1, as the arccos function is only defined within this range. If you don't put numbers in the range you will see a warning.
-
-4. **Press Enter/Equals**:  
-   The calculator will return the angle whose cosine is equal to the input value.
-
-**Example**:  
-To find `arccos(0.5)` in degrees:
-```
-    0.5 → arccos
-```
-Result: 60° (if in degree mode) or 1.0477 (if in radian mode).
+- **hyperbolic function:** 
+  - sinh(x)
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
