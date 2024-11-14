@@ -39,14 +39,19 @@ eternity is a scientific calculator designed to compute various transcendental f
     - click `a(b^x)` to obtain the result.
 
 - **trigonometric function:**
-  - toggle between radian or degree mode first using the radio buttons,
-  - enter the number you want to calculate using the digit buttons `0 - 9` (the number must be between -1 and 1),
-  - click `arccos(x)` for the result.
-  - ```
-    example: 0.5 -> arccos(x)
-    result: 60° (if in degree mode) or 1.0472 (if in radian mode).
-    ```
-  
+  - to calculate arccos(x):
+    - toggle between radian or degree mode first using the radio buttons,
+    - enter the number you want to calculate using the digit buttons `0 - 9` (the number must be between -1 and 1),
+    - click `arccos(x)` for the result.
+    - ```
+      example: 0.5 -> arccos(x)
+      result: 60° (if in degree mode) or 1.0472 (if in radian mode).
+      ```
+
+  - to calculate sinh(x):
+    - enter the number you want to calculate using the digit buttons `0 - 9`,
+    - click `sinh(x)` for the result.
+
 - **logarithm functions:**
   - to calculate the logarithm with base 10:
     - enter the desired number using the digit buttons `0 - 9`,
@@ -62,10 +67,6 @@ eternity is a scientific calculator designed to compute various transcendental f
     - follow with the base (b) using the digit buttons `0 - 9`,
     - the display should show `x,b`, where `x` is the argument and `b` is the base,
     - click `log_b(x)` to obtain the result.
-
-- **hyperbolic function:** 
-  - enter the number you want to calculate using the digit buttons `0 - 9`,
-  - click `sinh(x)` for the result.
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
