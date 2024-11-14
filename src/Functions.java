@@ -84,10 +84,9 @@ public class Functions {
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBase10(double x) {
-        if(x <= 0) throw new ArithmeticException("ERROR: NON-POSITIVE NUMBERS ONLY");
-        else if(x==1) {
-        	return 0;
-        }
+        if(x <= 0) throw new ArithmeticException("Error: Number is lesser than 1");
+        else if(x == 1) return 0;
+
         return ln(x) / ln(10);
     }
 
@@ -97,7 +96,7 @@ public class Functions {
      * @return the logarithm of a value with respect to a specified base.
      */
     public double logXBaseB(double[] initialDataSet) {
-        if(initialDataSet[0] <= 0) throw new ArithmeticException("ERROR: NON-POSITIVE NUMBERS ONLY");
+        if(initialDataSet[0] <= 0) throw new ArithmeticException("Error: Number is lesser than 1");
         return ln(initialDataSet[0]) / ln(initialDataSet[1]);
     }
 
@@ -149,7 +148,7 @@ public class Functions {
      * @return the natural logarithm of a value with respect to e as its base.
      */
     public double ln(double x) {
-        if(x <= 0) throw new IllegalArgumentException("ERROR: NON-POSITIVE NUMBERS ONLY");
+        if(x <= 0) throw new IllegalArgumentException("Error: Number is lesser than 1");
 
         //transform x to be close to 1 for faster convergence
         int k = 0;
