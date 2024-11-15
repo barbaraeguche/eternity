@@ -67,8 +67,8 @@ public class Calculator extends JFrame {
         add(radianButton);
 
         //toggle between mode groups
-        radianButton.addActionListener(_ -> toggleModes(false));
-        degreeButton.addActionListener(_ -> toggleModes(true));
+        radianButton.addActionListener(e -> toggleModes(false));
+        degreeButton.addActionListener(e -> toggleModes(true));
 
         //set the coordinates for digit buttons
         int digitX = TOPX + WIDTH + SPACE, digitY = TOPY + 2 * (HEIGHT + SPACE);
