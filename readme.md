@@ -74,7 +74,7 @@ to get the project up and running on your local machine, follow these steps:
 - **ensure jdk is installed:** must have the [latest jdk](https://www.java.com/en/download/manual.jsp) installed.
 - **clone the repository:**
 ```bash
-git clone https://github.com/barbaraeguche/comp354-eternity.git
+git clone https://github.com/barbaraeguche/eternity.git
 ```
 - **navigate to the project directory:**
 ```bash
