@@ -116,7 +116,7 @@ java CalculatorDriver
   
 </details>
 
-## how-to/videos 📸
+## videos 📸
 <details>
   <summary>showcase</summary>
   
