@@ -113,7 +113,7 @@ java CalculatorDriver
 <details>
   <summary>showcase</summary> <br>
   
-  
+  <img width="408" alt="eternity" src="https://github.com/user-attachments/assets/387385ac-a3cd-4764-ac59-9df285c5cf09">
 </details>
 
 ## videos 📸
