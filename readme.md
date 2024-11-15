@@ -112,8 +112,7 @@ java CalculatorDriver
 ## gallery 📸
 <details>
   <summary>showcase</summary> <br>
-
-  - **initial** <br>
+  
   
 </details>
 
