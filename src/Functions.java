@@ -51,9 +51,8 @@ public class Functions {
     public double abPowerX(double[] initialDataSet) {
         double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
         double[] power = { b, x };
-
-       // return a * xPowerY(power);
-        return (a*xPowerY(power));
+        
+        return a * xPowerY(power);
     }
 
     /**
