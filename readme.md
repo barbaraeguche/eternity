@@ -60,7 +60,7 @@ until now, all group members have contributed in one way or another.
     - the display should show `a,b,x`, where (a) is a multiplier, and (b) is the base raised to the power of (x),
     - click `a(b^x)` to obtain the result.
 
-- **trigonometric function:**
+- **trigonometric functions:**
   - to calculate arccos(x):
     - toggle between radian or degree mode first using the radio buttons,
     - enter the number you want to calculate using the digit buttons `0 - 9` (the number must be between -1 and 1),
@@ -117,16 +117,16 @@ java CalculatorDriver
   
 </details>
 
-## video 📸
+## how-to/videos 📸
 <details>
   <summary>showcase</summary>
   
-  - **x^y**
+  - **deviation functions**
   
-  - **logarithm**
+  - **power functions**
   
-  - **arccos(x)**
+  - **trigonometric functions**
   
-  - **standard deviation**
+  - **logarithm functions**
   
 </details>
