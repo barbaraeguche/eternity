@@ -14,7 +14,10 @@ public class Functions {
         double dataSetMean = calculateMean(initialDataSet);
         double sumOfDeviations = 0;
 
-        for(double i: initialDataSet) { sumOfDeviations += Math.pow(i - dataSetMean, 2); }
+        for(double i: initialDataSet) {
+            double[] power = { i - dataSetMean, 2 };
+            sumOfDeviations += xPowerY(power);
+        }
         return Math.sqrt(sumOfDeviations / ((double)initialDataSet.length - 1));
     }
     
@@ -29,18 +32,12 @@ public class Functions {
 
         if(x == 0) {
             if(y > 0) return 0;
-            else throw new ArithmeticException("0 raised to a negative or zero exponent is undefined.");
+            else throw new ArithmeticException("Error: undefined.");
         }
-        if(y % 1 == 0) {
-            return integerPower(x, (int)y);
-        }
-        
-        if(isNegativeExponent) {
-            y = -y;
-        }
-        if(x < 0 && y % 1 != 0) {
-            throw new ArithmeticException("Negative base with fractional exponent is undefined for real numbers.");
-        }
+        if(y % 1 == 0) return integerPower(x, (int)y);
+
+        if(isNegativeExponent) y = -y;
+        if(x < 0 && y % 1 != 0) throw new ArithmeticException("Error: cannot take the (x)root of a negative number.");
         
         double result = exponential(y * logarithm(x));
         return isNegativeExponent ? 1.0 / result : result;
@@ -53,9 +50,9 @@ public class Functions {
      */
     public double abPowerX(double[] initialDataSet) {
         double a = initialDataSet[0], b = initialDataSet[1], x = initialDataSet[2];
+        double[] power = { b, x };
 
-        //TODO update Math.pow after x^y is done
-        return a * Math.pow(b, x);
+        return a * xPowerY(power);
     }
 
     /**
@@ -87,11 +84,14 @@ public class Functions {
         double sum = 0; int maxIterations = 20; //higher value means more accuracy but slower computation
         //using taylor series approximation - calculate the term: (2k)! / (4^k * (k!)^2 * (2k + 1)) * x^(2k + 1)
         for(int k = 0; k < maxIterations; k++) {
-            sum += factorial(2 * k) / (Math.pow(4, k) * Math.pow(factorial(k), 2) * (2 * k + 1)) * Math.pow(x, 2 * k + 1);
+//            sum += factorial(2 * k) / (Math.pow(4, k) * Math.pow(factorial(k), 2) * (2 * k + 1)) * Math.pow(x, 2 * k + 1);
+            double[] power1 = { 4, k }, power2 = { factorial(k), 2 }, power3 = { x, 2 * k + 1 };
+            sum += factorial(2 * k) / (xPowerY(power1) * xPowerY(power2) * (2 * k + 1)) * xPowerY(power3);
         }
 
         double answer = Math.PI / 2 - sum;
         if(isDegreeMode) { answer = (answer * 180) / Math.PI; }
+
         return answer;
     }
 
@@ -190,6 +190,12 @@ public class Functions {
         
         return result;
     }
+    /**
+     * this function calculates the power of a base raised to an exponent.
+     * @param base the base value.
+     * @param exponent the exponent value, can be negative.
+     * @return the result of base raised to the exponent.
+     */
     private static double integerPower(double base, double exponent) { // The function to calculate integer powers by multiplying 'base' repeatedly
         double result = 1.0;
         boolean isNegativeExponent = exponent < 0;
@@ -201,7 +207,12 @@ public class Functions {
         }
         return isNegativeExponent? (1.0 / result) : result;
     }
-    private static double exponential(double x) { // Approximate the exponential function e^x using Taylor series expansion method
+    /**
+     * this function approximates the exponential function e^x using the taylor series expansion.
+     * @param x the exponent to which e is raised.
+     * @return the approximate value of e^x.
+     */
+    private static double exponential(double x) {
         double result = 1, term = 1;
             
         for(double i = 1; i <= 20; i++) {
@@ -210,6 +221,11 @@ public class Functions {
         }
         return result;
     }
+    /**
+     * this function approximates the natural logarithm ln(x) using a taylor series expansion.
+     * @param x the value for which to compute the natural logarithm.
+     * @return the approximate value of ln(x).
+     */
     private static double logarithm(double x) { // Approximate natural logarithm ln(x) using a Taylor series expansion for ln(1 + y)
         if (x <= 0) throw new ArithmeticException("Logarithm of non-positive number is undefined.");
 
@@ -220,17 +236,5 @@ public class Functions {
             term *= y * y;
         }
         return 2 * result;
-    }
-    private static double parseFractionalInput(String input) { // Method to parse a string input as a double, including fractions like "2/3"
-        if(input.contains("/")) {
-            String[] parts = input.split("/");
-            
-            if(parts.length == 2) {
-                double numerator = Double.parseDouble(parts[0]);
-                double denominator = Double.parseDouble(parts[1]);
-                
-                return numerator / denominator;
-            } else throw new IllegalArgumentException("Invalid fraction format. Use 'numerator/denominator'.");
-        } else return Double.parseDouble(input); //parse directly if not a fraction
     }
 }
