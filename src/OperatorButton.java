@@ -36,8 +36,7 @@ class OperatorButton extends JButton implements ActionListener {
         String displayText = calculator.displayLabel.getText();
 
         try {
-            if (displayText.contains(","))
-                throw new TooManyArguments("Error: Too Many Arguments");
+            if (displayText.contains(",")) throw new TooManyArguments("Error: Too Many Arguments");
         } catch (TooManyArguments exc) {
             calculator.displayLabel.setText("Error: Too Many Parameters");
             return;
@@ -55,35 +54,32 @@ class OperatorButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText(Calculator.getFormattedText(Math.sqrt(temp)));
                     return;
                 case "=":
-                    if (calculator.op == '\0')
-                        return; // No operation to perform
+                    if (calculator.op == '\0') return; //no operation to perform
                     temp = calculateIntermediateResult(temp);
                     calculator.displayLabel.setText(Calculator.getFormattedText(temp));
-                    calculator.number = temp; // Update number to allow chain calculations
-                    calculator.op = '\0'; // Reset operator
+                    
+                    calculator.number = temp; //update number to allow chain calculations
+                    calculator.op = '\0'; //reset operator
                     return;
                 default:
-                    // If there's a previous operation, calculate the intermediate result
+                    //if there's a previous operation, calculate the intermediate result
                     if (calculator.op != '\0') {
                         temp = calculateIntermediateResult(temp);
                         calculator.displayLabel.setText(Calculator.getFormattedText(temp));
                     }
-                    // Store the current value and operator for the next operation
+                    
+                    //store the current value and operator for the next operation
                     calculator.number = temp;
                     calculator.op = operationText.charAt(0);
                     return;
             }
-        } catch (ArithmeticException exc) {
-            calculator.displayLabel.setText("Error: Math Error");
-        }
+        } catch (ArithmeticException exc) { calculator.displayLabel.setText("Error: Math Error"); }
     }
 
     /**
-     * Helper method to calculate the intermediate result based on the stored
-     * operator and number.
-     * 
-     * @param temp The current value entered by the user.
-     * @return The calculated result.
+     * this a helper function to calculate the intermediate result based on the stored operator and number.
+     * @param temp the current value.
+     * @return the calculated result.
      */
     private double calculateIntermediateResult(double temp) {
         try {
@@ -98,9 +94,10 @@ class OperatorButton extends JButton implements ActionListener {
         } catch (ArithmeticException err) {
             String errorMsg = calculator.op == '%'
                     ? "Error: Modulus by zero"
-                    : "Error: Dividing by Zero";
+                    : "Error: Dividing by zero";
+            
             calculator.displayLabel.setText(errorMsg);
-            return temp; // Return current temp in case of error
+            return temp; //return current temp in case of error
         }
     }
 }
