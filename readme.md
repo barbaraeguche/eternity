@@ -93,7 +93,7 @@ until now, all group members have contributed in one way or another.
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
 
-- **ensure jdk is installed:** must have the [latest jdk](https://www.java.com/en/download/manual.jsp) installed.
+- **ensure jdk is installed:** must have the [latest jdk](https://www.oracle.com/java/technologies/downloads/#jdk23-windows) installed.
 - **clone the repository:**
 ```bash
 git clone https://github.com/barbaraeguche/eternity.git
