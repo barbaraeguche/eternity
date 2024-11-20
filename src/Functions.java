@@ -39,7 +39,7 @@ public class Functions {
         if(isNegativeExponent) y = -y;
         if(x < 0 && y % 1 != 0) throw new ArithmeticException("Error: cannot take the (x)root of a negative number.");
         
-        double result = exponential(y * logarithm(x));
+        double result = exponential(y * ln(x));
         return isNegativeExponent ? 1.0 / result : result;
     }
     
@@ -220,21 +220,5 @@ public class Functions {
             result += term;
         }
         return result;
-    }
-    /**
-     * this function approximates the natural logarithm ln(x) using a taylor series expansion.
-     * @param x the value for which to compute the natural logarithm.
-     * @return the approximate value of ln(x).
-     */
-    private static double logarithm(double x) { // Approximate natural logarithm ln(x) using a Taylor series expansion for ln(1 + y)
-        if (x <= 0) throw new ArithmeticException("Logarithm of non-positive number is undefined.");
-
-        double y = (x - 1) / (x + 1), result = 0.0, term = y; //term means each successful component in the Taylor series expansion
-        
-        for (double i = 1; i <= 20; i += 2) {
-            result += term / i;
-            term *= y * y;
-        }
-        return 2 * result;
     }
 }
