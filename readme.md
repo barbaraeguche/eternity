@@ -99,15 +99,7 @@ to get the project up and running on your local machine, follow these steps:
 git clone https://github.com/barbaraeguche/eternity.git
 ```
 - **navigate to the project directory:**
-```bash
-cd eternity
-cd src
-```
-- **run the project:**
-```bash
-javac CalculatorDriver.java
-java CalculatorDriver
-```
+```Go to Repository's file path, run the latest Eternity jar file in the Builds folder
 
 ## gallery 📸
 <details>
