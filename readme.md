@@ -102,7 +102,7 @@ git clone https://github.com/barbaraeguche/eternity.git
 ```bash
 cd build/1.0
 ```
-- **run the project:** run the latest eternity jar file (currently 1.0.0)
+- **run the project:** run the latest eternity jar file (currently 1.0.1)
 ```bash
 java -jar eternity1.0.0.jar
 ```
