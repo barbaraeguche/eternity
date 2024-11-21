@@ -93,13 +93,19 @@ until now, all group members have contributed in one way or another.
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
 
-- **ensure jdk is installed:** must have the [latest jdk](https://www.oracle.com/java/technologies/downloads/#jdk23-windows) installed.
+- **ensure jdk is installed:** must have the [latest jdk](https://www.oracle.com/java/technologies/downloads/) installed.
 - **clone the repository:**
 ```bash
 git clone https://github.com/barbaraeguche/eternity.git
 ```
-- **navigate to the project directory:**
-- Go to Repository's file path, run the latest Eternity jar file in the Builds folder (currently build 1.0.0)
+- **navigate to the project directory:** navigate to the latest eternity build folder (currently 1.0)
+```bash
+cd build/1.0
+```
+- **run the project:** run the latest eternity jar file (currently 1.0.0)
+```bash
+java -jar eternity1.0.0.jar
+```
 
 ## gallery 📸
 <details>
