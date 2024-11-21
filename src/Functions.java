@@ -185,7 +185,7 @@ public class Functions {
 
         //multiply by 2 as per taylor series formula
         result *= 2;
-        //adjust for factors of 2 (ln(2) ≈ 0.693147)
+        //adjust for factors of 2 (ln(2) by adding the multiplication of k (used in faster convergence above by 0.69314718056)
         result += k * 0.69314718056;
         
         return result;
