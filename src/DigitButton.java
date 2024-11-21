@@ -30,7 +30,15 @@ class DigitButton extends JButton implements ActionListener {
      * @param string the string to be checked for the presence of a period.
      * @return true if the string contains a period; false otherwise.
      */
-    static boolean isInString(String string) { return string.contains("."); }
+    static boolean isInString(String string) { 
+    	if(string.contains(",")){
+    		String lastNum = string.substring(string.lastIndexOf(","));
+    		return lastNum.contains(".")||lastNum.length()==1;
+    	}
+    	else {
+    		return string.contains(".");
+    	}
+    }
 
     /**
      * this method processes an action event triggered by a user interface component.
@@ -50,8 +58,12 @@ class DigitButton extends JButton implements ActionListener {
                     calculator.displayLabel.setText("0.");
                     calculator.setClear = false;
                 } else if (!isInString(calculator.displayLabel.getText())) {
-                    calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
-                } return;
+                	calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
+                }
+                else if(calculator.displayLabel.getText().lastIndexOf(",")==calculator.displayLabel.getText().length()-1) {
+                	calculator.displayLabel.setText(calculator.displayLabel.getText() + "0.");
+                }
+                return;
             }
             case "+/-" -> {
                 String currentText = calculator.displayLabel.getText();
