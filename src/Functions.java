@@ -84,7 +84,6 @@ public class Functions {
         double sum = 0; int maxIterations = 20; //higher value means more accuracy but slower computation
         //using taylor series approximation - calculate the term: (2k)! / (4^k * (k!)^2 * (2k + 1)) * x^(2k + 1)
         for(int k = 0; k < maxIterations; k++) {
-//            sum += factorial(2 * k) / (Math.pow(4, k) * Math.pow(factorial(k), 2) * (2 * k + 1)) * Math.pow(x, 2 * k + 1);
             double[] power1 = { 4, k }, power2 = { factorial(k), 2 }, power3 = { x, 2 * k + 1 };
             sum += factorial(2 * k) / (xPowerY(power1) * xPowerY(power2) * (2 * k + 1)) * xPowerY(power3);
         }
