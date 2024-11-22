@@ -104,7 +104,7 @@ cd build/1.0
 ```
 - **run the project:** run the latest eternity jar file (currently 1.0.1)
 ```bash
-java -jar eternity1.0.0.jar
+java -jar eternity1.0.1.jar
 ```
 
 ## gallery 📸
