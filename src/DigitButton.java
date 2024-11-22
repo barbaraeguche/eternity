@@ -33,9 +33,8 @@ class DigitButton extends JButton implements ActionListener {
     static boolean isInString(String string) { 
     	if(string.contains(",")){
     		String lastNum = string.substring(string.lastIndexOf(","));
-    		return lastNum.contains(".")||lastNum.length()==1;
-    	}
-    	else {
+    		return lastNum.contains(".") || lastNum.length()==1;
+    	} else {
     		return string.contains(".");
     	}
     }
@@ -60,7 +59,7 @@ class DigitButton extends JButton implements ActionListener {
                 } else if (!isInString(calculator.displayLabel.getText())) {
                 	calculator.displayLabel.setText(calculator.displayLabel.getText() + ".");
                 }
-                else if(calculator.displayLabel.getText().lastIndexOf(",")==calculator.displayLabel.getText().length()-1) {
+                else if(calculator.displayLabel.getText().lastIndexOf(",") == calculator.displayLabel.getText().length() - 1) {
                 	calculator.displayLabel.setText(calculator.displayLabel.getText() + "0.");
                 }
                 return;
