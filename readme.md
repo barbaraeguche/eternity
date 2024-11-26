@@ -34,7 +34,9 @@ transcendental functions from scratch, which are mathematical concepts widely us
 until now, all group members have contributed in one way or another.
 
 ## how to use ❓
-- **deviation functions**:
+<details>
+  <summary>deviation functions</summary>
+
   - to calculate a standard deviation:
     - enter a list of numbers, each separated by a comma `,`, using the digit buttons `0 - 9`,
     - click `st.dev` to obtain the result.
@@ -42,8 +44,11 @@ until now, all group members have contributed in one way or another.
   - to calculate a mean absolute deviation:
     - enter a list of numbers, each separated by a comma `,`, using the digit buttons `0 - 9`,
     - click `mad` to obtain the result.
+</details>
 
-- **power functions:** 
+<details>
+  <summary>power functions</summary>
+  
   - to calculate (x^y):
     - enter the base (x) using the digit buttons `0 - 9`,
     - use a `,` (comma) to separate the arguments,
@@ -59,8 +64,11 @@ until now, all group members have contributed in one way or another.
     - enter the exponent (x) using the digit buttons `0 - 9`,
     - the display should show `a,b,x`, where (a) is a multiplier, and (b) is the base raised to the power of (x),
     - click `a(b^x)` to obtain the result.
+</details>
 
-- **trigonometric functions:**
+<details>
+  <summary>trigonometric functions</summary>
+
   - to calculate arccos(x):
     - toggle between radian or degree mode first using the radio buttons,
     - enter the number you want to calculate using the digit buttons `0 - 9` (the number must be between -1 and 1),
@@ -73,8 +81,11 @@ until now, all group members have contributed in one way or another.
   - to calculate sinh(x):
     - enter the number you want to calculate using the digit buttons `0 - 9`,
     - click `sinh(x)` for the result.
+</details>
 
-- **logarithm functions:**
+<details>
+  <summary>logarithm functions</summary>
+
   - to calculate the logarithm with base 10:
     - enter the desired number using the digit buttons `0 - 9`,
     - click `log_b(x)` to obtain the result.
@@ -89,6 +100,7 @@ until now, all group members have contributed in one way or another.
     - follow with the base (b) using the digit buttons `0 - 9`,
     - the display should show `x,b`, where `x` is the argument and `b` is the base,
     - click `log_b(x)` to obtain the result.
+</details>
 
 ## running the project 🏁
 to get the project up and running on your local machine, follow these steps:
@@ -112,18 +124,4 @@ java -jar eternity1.0.1.jar
   <summary>showcase</summary> <br>
   
   <img width="408" alt="eternity" src="https://github.com/user-attachments/assets/387385ac-a3cd-4764-ac59-9df285c5cf09">
-</details>
-
-## videos 📸
-<details>
-  <summary>showcase</summary>
-  
-  - **deviation functions**
-  
-  - **power functions**
-  
-  - **trigonometric functions**
-  
-  - **logarithm functions**
-  
 </details>
